@@ -1,0 +1,14 @@
+<ul class="project-tags">
+	{% for tag in project.tags %}
+	<li>
+		<img src="/images/icon-{{tag}}.png" alt="{{tag}} icon">
+		<!-- image tags for each article -->
+	</li>
+	{% endfor %}
+</ul>
+<h1>{{ project.title }}</h1>
+<p>
+	{{ project.content | strip_html | strip_newlines | truncate: 200 }}
+	<!-- strip html, new lines, limit to 200 characters -->
+</p>
+<!-- make sure only one featured atricle appears here -->

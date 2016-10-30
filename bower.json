@@ -1,0 +1,19 @@
+{
+  "name": "beringseaversus.me-new",
+  "description": "website about the work of fishermen in the Bering Sea",
+  "main": "index.js",
+  "authors": [
+    "Daniel Hoksza"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "_assets/bower_components",
+    "test",
+    "tests"
+  ]
+}

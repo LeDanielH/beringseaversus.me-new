@@ -1,0 +1,29 @@
+# author
+author-name: Daniel Hoksza
+author-nickname: LeDaniel_Z
+author-contact: daniel.hoksza@gmail.com
+author-website: 'https://ledanielh.github.io'
+
+# template settings
+header: 'beringseaversusme-header-2.jpg'
+background: 'background.jpg'
+logo: 'beringseaversusme-logo.png'
+google-font: 'http://fonts.googleapis.com/css?family=Arimo:400,700,400italic|Oswald:300,700'
+libjs: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js'
+libcss: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css'
+copyright: '&copy; beringseaversus.me 2016'
+
+# metatag
+title: BERINGSEAVERSUS.ME
+description: A website about the work of fisherman in the Bering Sea
+rel-author: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
+rel-publisher: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
+google-webmasters-verification: uF8DPolZsm8V3xIZYmwNFUIEB5AWNwgDXRMGOO3PtrQ
+
+# social
+social:
+- {icon: 'fa fa-google-plus', url: 'https://plus.google.com/b/104060468815204147682/+BsvsMe/posts'}
+- {icon: 'fa fa-twitter', url: 'https://twitter.com/beringseavsme'}
+- {icon: 'fa fa-instagram', url: 'https://instagram.com/beringseaversus.me/'}
+- {icon: 'fa fa-flickr', url: 'https://www.flickr.com/photos/129451935@N08/'}
+- {icon: 'fa fa-youtube', url: 'https://www.youtube.com/channel/UC4CTMsKfEjPfmRYGEzXbOyg/videos'}

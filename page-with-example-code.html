@@ -1,0 +1,47 @@
+---
+layout: post
+---
+
+<!-- EXAMPLE CODE PAGES-->
+<div class="trigger">
+	{% for page in site.pages %}
+		{% if page.title %}
+		<a href="page-link"> {{ page.url | prepend: site.baseurl }}</a>
+		{% endif %}
+	{% endfor %}
+</div>
+
+
+<!-- EXAMPLE CODE POSTS-->
+<div class="trigger">
+{% assign count = 0 %}
+	{% for post in site.posts | reversed | limit:4 %}
+		{% if post.featured == true and count < 1 %}
+			{% include post.html %}
+		{% assign count = count | plus: 1 %}
+		{% endif %}
+	{% endfor %}
+</div>
+
+
+<!-- EXAMPLE CODE POSTS CATEGORIES!-->
+<div class="trigger">
+{% assign count = 0 %}
+	{% for post in site.categories['guide'] | reversed | limit:4 %}
+		{% if post.featured == true and count < 1 %}
+			{% include post.html %}
+		{% assign count = count | plus: 1 %}
+		{% endif %}
+	{% endfor %}
+</div>
+
+<!-- EXAMPLE CODE POSTS CATEGORIES!-->
+<div class="trigger">
+{% assign count = 0 %}
+	{% for project in site.categories['project'] %}
+		{% if project.featured == true and count < 1 %}
+			{% include project.html %}
+		{% assign count = count | plus: 1 %}
+		{% endif %}
+	{% endfor %}
+</div>
