@@ -13,8 +13,8 @@ var paths = {
     },
 
 	styles: {
-        src: srcJekyll + '_pages/**/*.+(scss|sass)',
-        dest: destJekyll + 'pages/'
+        src: '_pages/**/*.+(scss|sass)',
+        dest: 'pages/'
     },
 
     scripts: {
