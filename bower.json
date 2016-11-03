@@ -15,5 +15,9 @@
     "_assets/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "semantic-ui-sass": "*",
+    "jquery": "^3.1.1"
+  }
 }

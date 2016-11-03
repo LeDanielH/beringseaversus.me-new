@@ -1,8 +1,8 @@
-var vars = require('./gulp/vars'),
+var vars = require('./_gulp/vars'),
 	gulp = require('gulp');
 
 // require('./gulp/process-html');
-require('./gulp/process-styles');
+require('./_gulp/process-styles');
 // require('./gulp/process-scripts');
 // require('./gulp/process-data');
 // require('./gulp/deployment');
@@ -18,7 +18,7 @@ gulp.task('watch', function() {
 gulp.task('default', [
 	// 'process-html',
 	'process-styles',
-	'process-scripts',
+	'process-scripts'
 	// 'watch',
 	// 'localServer'
 ]);

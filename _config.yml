@@ -13,10 +13,10 @@ pagecss: main.min.css
 permalink: pretty
 # permalink: /:categories/:title
 markdown: kramdown
-exclude: ['node_modules', 'bower_components', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'PROD', 'gulp', 'jekyll', 'Gemfile', 'Gemfile.lock','feed.xml']
+exclude: ['node_modules', 'assets/bower_components', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'PROD', 'gulp', 'jekyll', 'Gemfile', 'Gemfile.lock','feed.xml']
 include: ['_pages']
 gems:
-  - jekyll-asset
+  - jekyll-assets
   # - jekyll-seo-tag
   - jekyll-sitemap
 
@@ -24,5 +24,6 @@ gems:
 
 assets:
   sources:
-    - _assets/bower
+    - assets/bower_components
+    - assets/js
 

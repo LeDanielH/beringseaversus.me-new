@@ -11,13 +11,17 @@
   "dependencies": {
     "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-connect": "^4.1.0",
     "gulp-css-purge": "^1.0.27",
     "gulp-cssnano": "^2.1.2",
     "gulp-gzip": "^1.4.0",
+    "gulp-jshint": "^2.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-strip-css-comments": "^1.2.0",
-    "gulp-uncss": "^1.0.5"
+    "gulp-uglify": "^2.0.0",
+    "gulp-uncss": "^1.0.5",
+    "jshint": "^2.9.4"
   }
 }
