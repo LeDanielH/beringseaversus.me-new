@@ -20,6 +20,10 @@ rel-author: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
 rel-publisher: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
 google-webmasters-verification: uF8DPolZsm8V3xIZYmwNFUIEB5AWNwgDXRMGOO3PtrQ
 
+# assets versions
+jquery: 3.1.1
+semantic-ui: 2.2.6
+
 # social
 social:
 - {icon: 'fa fa-google-plus', url: 'https://plus.google.com/b/104060468815204147682/+BsvsMe/posts'}

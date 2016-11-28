@@ -9,7 +9,7 @@ var vars = require('./vars'),
 
 gulp.task('process-scripts', function() {
 	return gulp.src([
-		vars.paths.scripts.src + 'app.js'
+		vars.paths.scripts.src
 	])
 	.pipe(concat(vars.renderedNames.javascript.myJs))
 	.pipe(checkJs())

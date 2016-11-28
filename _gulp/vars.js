@@ -1,7 +1,4 @@
-var srcJekyll = '_site/';
-var destJekyll = '_PROD/';
 var assetsSrc = 'assets/';
-var assetsDest = destJekyll + '/' + assetsSrc + '/';
 var bower = assetsSrc + '/_bower_components/';
 
 
@@ -18,8 +15,8 @@ var paths = {
     },
 
     scripts: {
-        src: srcJekyll + 'assets/js/**/*.js',
-        dest: destJekyll + 'scripts/'
+        src: '_pages/**/*.js',
+        dest: 'pages/'
     },
 
     fonts: {
@@ -28,8 +25,8 @@ var paths = {
     },
 
     images: {
-        src: srcJekyll + '_pages/images/**/*.+(jpg|png|svg|gif)',
-        dest: destJekyll + 'pages/'
+        src: '_pages/**/*.+(jpg|png|svg|gif)',
+        dest: 'pages/'
     }
 };
 

@@ -1,10 +1,9 @@
-<html>
-	<head>
-		{% include head.html %}
-		{% include analytics.html %}
-	</head>
-	<body>
-		{{ content }}
-		{% include scripts.html %}
+<!DOCTYPE html>
+<html class="no-js">
+	{% include head.html %}
+	<body class="page">
+		{% include nav.html %}
+			{{ content }}
+		{% include footer.html %}
 	</body>
 </html>

@@ -2,8 +2,9 @@
 layout: default
 ---
 
-{% include header.html %}
+<div id="container" class="page__width-full">
+	{% include header.html %}
+	<div class="page__width">{{ content }}</div>
+	{% include scripts-modular.html %}
+</div>
 
-<section class="content">{{ content }}</section>
-
-{% include footer.html %}
