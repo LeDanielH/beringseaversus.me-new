@@ -13,7 +13,7 @@ pagecss: main.min.css
 permalink: pretty
 # permalink: /:categories/:title
 markdown: kramdown
-exclude: ['node_modules', 'assets/bower_components', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'gulp', 'jekyll', 'Gemfile', 'Gemfile.lock','feed.xml']
+exclude: ['node_modules', 'assets/bower_components', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'gulp', 'jekyll', 'Gemfile', 'Gemfile.lock','feed.xml', 'page-with-example-code.html']
 include: ['_pages']
 gems:
   - jekyll-assets
