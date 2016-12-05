@@ -9,7 +9,7 @@ require('./_gulp/process-styles');
 // require('./gulp/process-js-libraries');
 
 gulp.task('watch', function() {
-	// gulp.watch(vars.paths.html.src, ['process-html']);
+	gulp.watch(vars.paths.html.src, ['process-html']);
 	gulp.watch(vars.paths.styles.src, ['process-styles']);
 	gulp.watch(vars.watchedJsFiles, ['process-scripts']);
 	// gulp.watch(vars.paths.images.src, ['process-images']);
@@ -18,7 +18,7 @@ gulp.task('watch', function() {
 gulp.task('default', [
 	// 'process-html',
 	'process-styles',
-	'process-scripts'
-	// 'watch',
-	// 'localServer'
+	//'process-scripts'
+	 //'watch',
+	 //'localServer'
 ]);

@@ -12,10 +12,10 @@ gulp.task('process-json', function() {
 
 gulp.task('process-images', function() {
 	return gulp.src([vars.paths.images.src])
-	.pipe(minifyImages({
-		optimizationLevel: 3,
-		progressive: true,
-		interlaced: true
-	}))
+		.pipe(minifyImages({
+			optimizationLevel: 3,
+			progressive: true,
+			interlaced: true
+		}))
 	.pipe(gulp.dest(vars.paths.images.dest));
 });

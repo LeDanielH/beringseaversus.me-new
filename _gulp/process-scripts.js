@@ -5,14 +5,23 @@ var vars = require('./vars'),
 	localServer = require('gulp-connect'),
 	concat = require('gulp-concat'),
 	uglifyJs = require('gulp-uglify'),
+	plumber = require('gulp-plumber'),
+	sourcemaps = require('gulp-sourcemaps'),
+	babel = require('gulp-babel'),
 	checkJs = require('gulp-jshint');
 
 gulp.task('process-scripts', function() {
 	return gulp.src([
 		vars.paths.scripts.src
 	])
+	.pipe(plumber())
+	.pipe(sourcemaps.init())
+	.pipe(babel({
+		presets: ['es2015']
+	}))
 	.pipe(concat(vars.renderedNames.javascript.myJs))
 	.pipe(checkJs())
+	.pipe(sourcemaps.write())
 	.pipe(gulp.dest(vars.paths.scripts.dest))
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())

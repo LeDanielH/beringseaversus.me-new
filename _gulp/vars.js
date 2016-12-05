@@ -1,5 +1,8 @@
 var assetsSrc = 'assets/';
 var bower = assetsSrc + '/_bower_components/';
+var srcSass = '_pages/**/*.+(scss|sass)';
+var destSass = '_pages/';
+
 
 
 var paths = {
@@ -10,8 +13,8 @@ var paths = {
 	// },
 
 	styles: {
-		src: '_pages/**/*.+(scss|sass)',
-		dest: '_pages/'
+		src: srcSass,
+		dest: destSass
 	},
 
 	scripts: {
@@ -52,7 +55,7 @@ var jsLibraries = {
 	vue: {
 		src: {
 			min: bower + 'vue/dist/vue.min.js',
-			debug: bower + 'vue/dist/vue.js',
+			debug: bower + 'vue/dist/vue.js'
 		},
 		dest: assetsSrc + 'libs-js/'
 	},
@@ -60,7 +63,7 @@ var jsLibraries = {
 	vueX: {
 		src: {
 			min: bower + 'vue/dist/vuex.min.js',
-			debug: bower + 'vue/dist/vuex.js',
+			debug: bower + 'vue/dist/vuex.js'
 		},
 		dest: assetsSrc + 'libs-js/'
 	},
@@ -68,7 +71,7 @@ var jsLibraries = {
 	vueRouter: {
 		src: {
 			min: bower + 'vue-router/dist/vue-router.min.js',
-			debug: bower + 'vue-router/dist/vue-router.js',
+			debug: bower + 'vue-router/dist/vue-router.js'
 		},
 		dest: assetsSrc + 'libs-js/'
 	},
@@ -79,16 +82,6 @@ var jsLibraries = {
 			debug: bower + 'vue-resource/dist/vue-resource.js',
 		},
 		dest: assetsSrc + 'libs-js/'
-	},
-};
-
-var sassLibs = {
-	semanticUI: {
-		src: {
-			min: '',
-			debug: bower + 'semantic-ui-sass/app/assets/stylesheets/**/*.+(scss|sass)'
-		},
-		dest: assetsSrc + 'libs-sass/'
 	}
 };
 
