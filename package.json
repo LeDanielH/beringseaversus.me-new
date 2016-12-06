@@ -4,7 +4,9 @@
   "description": "website about the work of fishermen in the Bering Sea",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install",
+    "start": "gulp"
   },
   "author": "Daniel Hoksza",
   "license": "ISC",
@@ -27,8 +29,7 @@
     "gulp-sourcemaps": "^1.9.1",
     "gulp-strip-css-comments": "^1.2.0",
     "gulp-uglify": "^2.0.0",
-    "gulp-uncss": "https://registry.npmjs.org/gulp-uncss/-/gulp-uncss-1.0.6.tgz",
     "gulp-util": "^3.0.7",
-    "jshint": "^2.9gu.4"
+    "jshint": "^2.9.4"
   }
 }
