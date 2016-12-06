@@ -1,0 +1,20 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ site.data.template.title }} | {{ page.title }}</title>
+
+	<!-- NOJS -->
+	<script>
+		document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+	</script>
+	{% if page.layout == "post" %}
+		{% include head/assets-post.html %}
+	{% elsif page.layout == "app" %}
+		{% include head/assets-app.html %}
+	{% endif %}
+	{% include head/meta.html %}
+	{% include head/icons.html %}
+	{% include head/analytics.html %}
+	{% include head/feed.html %}
+</head>

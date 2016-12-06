@@ -45,3 +45,267 @@ layout: post
 		{% endif %}
 	{% endfor %}
 </div>
+
+<!-- YAML SHOW ELEMENT IN PAGE  -->
+---
+show_footer: false
+---
+{% if page.show_footer %}
+	<footer>I am a footer</footer>
+{% endif %}
+
+
+<!-- INCLUDE PARAMETERS -->
+
+<!-- include -->
+<div class="spacing youtube">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ include.youtube_id }}" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<!-- included -->
+{% include youtube.html youtube_id="YIiHiMXOeYU" %}
+
+
+<!-- LIQUID -->
+<h1>{{ page.heading | upcase | truncate: 8 }}</h1>
+
+{% if page.heading contains "cupcake" %}
+	<h1>I want cupcakes</h1>
+{% else %}
+	<h1>I don't want cupcakes</h1>
+{% endif %}
+
+
+<!-- COLLECTIONS -->
+---
+type: Chocolate Banana
+rating: 1
+image_path: /images/cupcakes/chocolate_banana.jpg
+description: Our delicious chocolate and banana cupcake.
+---
+<div class="cupcakes">
+	{% for cupcake in site.cupcakes %}
+	{% if cupcake.type != "Lemon" and cupcake.rating < 3 %} <!-- will show everything but lemon -->
+	<div class="cupcake">
+		<div class="image"><img src="{{ cupcake.image_path }}" alt="{{ cupcake.type }}" /></div>
+		<h2>{{ cupcake.type }}</h2>
+		<p>{{ cupcake.description }}</p>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+
+
+<!-- LIQUID FILTERS -->
+{{ "cupcake" | prepend: "chocolate " }}
+chocolate cupcake
+
+{{ "lemon" | append: " cake" }}
+lemon cake
+
+{{ "i like cupcakes" | capitalize }}
+I like cupcakes
+
+{{ "BakeryStore" | downcase }}
+bakerystore
+
+{{ "apple pie" | upcase }}
+APPLE PIE
+
+{{ "muffin&cupcake?" | cgi_escape }}
+muffin%26cupcake%3F
+
+{{ "<h1>Banana Split</h1>" | escape }}
+<h1>Banana Split</h1>
+
+{{ "blueberry muffin.html" | slugify }}
+blueberry-muffin-html
+
+{{ "<h1>Greentea cheesecake</h1>" | strip_html }}
+Greentea cheesecake
+
+{{ "**Sour dough** bread" | markdownify }}
+Sour dough bread
+
+{{ "I really really like cupcakes" | remove_first: 'really' }}
+I really like cupcakes
+
+{{ "I really really like cupcakes" | remove: 'really' }}
+I like cupcakes
+
+{{ "I really really like cupcakes" | replace_first: "really", "truly" }}
+I truly really like cupcakes
+
+{{ "I really really like cupcakes" | replace: "really", "truly" }}
+I truly truly like cupcakes
+
+{{ "Carrot cake" | size }}
+11
+
+{{ "Peanut butter cheesecake" | number_of_words }}
+3
+
+{{ "Souffle" | slice: 0 }}
+S
+
+{{ "Souffle" | slice: 1 }}
+o
+
+{{ "Souffle" | slice: -2 }}
+l
+
+{{ "Souffle" | slice: 2,4 }}
+uffl
+
+{{ "apple,banana,carrot" | split:"," | jsonify }}
+["apple","banana","carrot"]
+
+{{ "The freshest bread in San Francisco" | truncate: 15 }}
+The freshest...
+
+{{ "Who ate all the cupcakes?" | truncatewords: 3 }}
+Who ate all...
+
+
+<!-- LOOPS -->
+{% for cupcake in site.cupcakes reversed limit: 3 offset: 3 %}
+<div class="cupcake">
+	<div class="image">
+		<img
+			src="{{ cupcake.image_path }}"
+			alt="{{ cupcake.type }}"
+			style="-webkit-filter: {% cycle 'grayscale', 'sepia', 'invert' %}(100%)" />
+	</div>
+	<h2
+		{% if forloop.first or forloop.last %}
+			style="background: black; color: white;"
+		{% endif %}
+
+	    <!--or I could use this for the last three items, rindex = reversed index -->
+		{% if forloop.rindex <= 3 %}
+			style="background: black; color: white;"
+		{% endif %}
+		title="{{forloop.length}}"
+	>{{ forloop.index }}.{{ cupcake.type }}</h2> <!-- forloop.index will return nummber, forloop.index0 will start at 0 -->
+	<p>{{ cupcake.description }}</p>
+</div>
+{% endfor %}
+
+
+---
+layout: page
+title: Muffins
+flavours: []
+---
+...
+{% for flavour in page.flavours %}
+{{ flavour }}
+{% else %}
+<h3>There are no flavours</h3>
+{% endfor %}
+...
+
+<!-- DISPLAING DATE -->
+
+<p>{{ post.date | date: '%B %d, %Y' }}</p>
+
+---
+date: 2016-03-23T10:20:00Z
+---
+{{ page.date | date_to_long_string }}
+23 March 2016
+{{ page.date | date_to_string }}
+23 Mar 2016
+{{ page.date | date: "%m/%d/%Y" }}
+03/23/2016
+<!-- migth be useful for Javascript -->
+{{ page.date | date_to_xmlschema }}
+2016-03-23T23:20:00+13:00
+
+<!-- -rd -st -th -nd -->
+{% assign day = page.date | date: "%-d"  %}
+{% case day %}
+	{% when '1' or '21' or '31' %}{{ day }}st
+	{% when '2' or '22' %}{{ day }}nd
+	{% when '3' or '23' %}{{ day }}rd
+	{% else %}{{ day }}th
+{% endcase %}
+{{ page.date | date: "of %B, %Y" }}
+
+
+<!-- JEKYLL DATA -->
+var markers = {{ site.data.locations | jsonify }}
+
+<a href="http://twitter.com/{{ site.data.authors[post.author].twitter_handle }}"></a>
+<img src="{{ site.data.authors[post.author].image_path }}" alt="{{ site.data.authors[post.author].full_name }}" class="profile" />
+
+
+<!-- JEKYLL NAV -->
+<nav class="main-nav">
+	<ul>
+		{% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
+		{% for p in navigation_pages %}
+		{% if p.navigation_weight %}
+		<li>
+			<a href="{{ p.url }}" {% if p.url == page.url %}class="active"{% endif %}>
+				{{ p.title }}
+			</a>
+		</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+</nav>
+
+
+<!-- JEKYLL SORTING IMAGES FOR GALLERY -->
+
+<!-- THIS IS EXAMPLE OF ONE OF THE COLLECTION FILES -->
+---
+image_path: /images/cakes/lemon-cake.jpg
+title: Lemon Cake
+weight: 1
+---
+{% assign sorted_photos = site.photo_gallery | sort: "weight" %}
+<ul class="photo-gallery">
+	{% for image in sorted_photos %}
+	<li><img src="{{ image.image_path }}" alt="{{ image.title}}"/></li>
+	{% endfor %}
+</ul>
+
+
+---
+layout: null
+---
+{% for post in site.posts %}
+{% for post in category[1] %}
+{% for post in site.categories.my_category %}
+{% for post in site.tags.my_tag %}
+{% for category in site.categories %}
+	<h2>{{ category[0] }}</h2>
+
+---
+layout: posts
+title: How are chocolate cookies made?
+date: 2016-01-01
+published: false
+---
+<!-- published false temporarily remove page from jekyll indexing -->
+
+---
+layout: page
+title: Blog Page
+excerpt_separator: <!-- excerpt -->
+---
+<ul>
+	{% for post in site.posts %}
+	<li><a href="{{ post.url }}">{{ post.title }}</a>
+		<!-- glimpse of what is inside -->
+		{{ post.excerpt }}
+	</li>
+	{% endfor %}
+</ul>
+
+How are chocolate cookies made?
+Well now you'll find out!
+<!-- excerpt -->
+The chocolate chip cookie was invented by Ruth Graves Wakefield.

@@ -1,0 +1,9 @@
+---
+layout: app
+title: fishing companies
+---
+
+{% for company in site.fishing_companies %}
+	<h1>{{ company.title }}</h1>
+	<p>{{ company.content }}</p>
+{% endfor %}

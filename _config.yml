@@ -6,24 +6,40 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-pagecss: main.min.css
 # baseurl: /beringseaversus.me
 # url: "http://yourdomain.com" # the base hostname & protocol for your site
 
-permalink: pretty
-# permalink: /:categories/:title
-markdown: kramdown
-exclude: ['node_modules', 'assets/bower_components', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'gulp', 'jekyll', 'Gemfile', 'Gemfile.lock','feed.xml', 'page-with-example-code.html', npm-shrinkwrap.json, '**/*.sass', '_pages/**/main.css']
-include: ['_pages']
-gems:
-  - jekyll-assets
-  # - jekyll-seo-tag
-  - jekyll-sitemap
+port:         9876
+source:       devel
+destination:  deploy
+markdown:     kramdown
+exclude:      ['node_modules', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'gulp', 'Gemfile', 'Gemfile.lock', 'feed.xml', 'page-with-example-code.html', npm-shrinkwrap.json, '**/*.sass', '**/*.scss', '_pages/**/main.css']
+include:      ['.htaccess']
+incremental:  false
+collections:
+  companies:
+    output: true # this generates a page for each collection
 
-# Build settings
+url: https://beringseaversus.me
+compress_html:
+  blanklines: true
 
-assets:
-  sources:
-    - assets/bower_components
-    - assets/js
-
+defaults:
+  -
+    scope:
+      type:       "pages"
+    values:
+#      permalink:  /pages/
+      layout:     page
+  -
+    scope:
+      type:       "posts"
+    values:
+      permalink:  /blog/:categories/:title/
+      layout:     post
+  -
+    scope:
+      type:       "companies"
+    values:
+      permalink: /collections/:collection/:name/
+      layout: company
