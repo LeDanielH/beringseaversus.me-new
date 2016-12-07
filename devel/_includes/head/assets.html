@@ -1,3 +1,9 @@
-<link rel="stylesheet" href="{{ site.baseurl }}/{{page.url}}/main.min.css" />
 <link href='{{ site.data.template.google-font }}' rel='stylesheet' type='text/css'>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/{{ site.data.template.jquery }}/jquery.min.js"></script>
+
+{% if site.environment == 'development' %}
+	<link rel="stylesheet" href="{{ site.baseurl | append:site.baseurl }}/assets/main.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/{{ site.data.template.jquery }}/jquery.js"></script>
+{% else %}
+	<link rel="stylesheet" href="{{ site.baseurl | append:site.baseurl }}/assets/main.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/{{ site.data.template.jquery }}/jquery.min.js"></script>
+{% endif %}

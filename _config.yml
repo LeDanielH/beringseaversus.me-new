@@ -7,29 +7,59 @@
 
 # Site settings
 # baseurl: /beringseaversus.me
-# url: "http://yourdomain.com" # the base hostname & protocol for your site
+# url: "http://yourdomain.com" #
 
+# set to production when you think you are done
+environment:  development
+
+# your localhost - no need for xampp or any bulshit like that
+host:         127.0.0.1
+
+ # your localhost port
 port:         9876
+
+ # url the deploy folder will be uploaded to / the base hostname & protocol for your site
+url: ""
+
+# does not include hostname, this is what goes after url(like project folder on github), always prepend with slash, can leave this blank
+baseurl: /beringseaversus.me
+show_dir_listing: true
+
+# where you develop
 source:       devel
+
+# folder with final product
 destination:  deploy
-markdown:     kramdown
+
+# can leave this blank, useful for posts - will get the post date with you current timezone
+timezone:     Europe/Prague
+
+# this is what you don't want in deploy folder
 exclude:      ['node_modules', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'gulp', 'Gemfile', 'Gemfile.lock', 'feed.xml', 'page-with-example-code.html', npm-shrinkwrap.json, '**/*.sass', '**/*.scss', '_pages/**/main.css']
+
+# this is what you want in deploy folder
 include:      ['.htaccess']
-incremental:  false
+
+# faster builds but inreliable
+incremental:  true
+
+# collections are used like list of things (albums, team members, companies in this case), if you want to create another collection, you have to make a folder in devel like that '_collectionname' and than include it here, just like I included companies
 collections:
   companies:
     output: true # this generates a page for each collection
 
-url: https://beringseaversus.me
+# removes blank lines from the final html
 compress_html:
+  # if set to false, your html file will shrink into one line (minified)
   blanklines: true
 
+# this is where I set paths for each type of template
 defaults:
   -
     scope:
       type:       "pages"
     values:
-#      permalink:  /pages/
+      # permalink:  /pages/ # pages live in the root directory by default
       layout:     page
   -
     scope:

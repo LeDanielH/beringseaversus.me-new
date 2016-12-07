@@ -1,8 +1,5 @@
 var assetsSrc = 'assets/';
 var bower = assetsSrc + '/_bower_components/';
-var srcSass = '_pages/**/*.+(scss|sass)';
-var destSass = '_pages/';
-
 
 
 var paths = {
