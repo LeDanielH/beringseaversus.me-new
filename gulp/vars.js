@@ -16,18 +16,22 @@ var paths = {
 	styles: {
 		modular: { // for example banners
 			src: devel + '_pages/**/*.+(scss|sass)',
-			dest: devel + '_pages/'
+			dest: devel + '_pages/',
+			watch: devel + '_pages/**/*.+(scss|sass)'
 		},
+
 		all: {
 			src: assetsSrc + '_sass/*.+(scss|sass)', // will process only files without prepended underscore
-			dest: assetsSrc
+			dest: assetsSrc + 'css/',
+			watch: assetsSrc + '_sass/**/*.+(scss|sass)'
 		}
 	},
 
 	scripts: {
 		modular: {
 			src: devel + '_pages/**/*.js',
-			dest: devel + '_pages/'
+			dest: devel + '_pages/',
+			watch: devel +  '_pages/**/*.js'
 		},
 		all: {
 			src: assetsSrc + '_scripts/',
