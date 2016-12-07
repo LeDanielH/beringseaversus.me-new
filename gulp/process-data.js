@@ -6,8 +6,8 @@ var vars = require('./vars'),
 
 gulp.task('process-json', function() {
 	return gulp.src([vars.paths.json.src])
-	.pipe(gulp.dest(vars.paths.json.dest))
-	.pipe(localServer.reload());
+		.pipe(gulp.dest(vars.paths.json.dest))
+		.pipe(localServer.reload());
 });
 
 gulp.task('process-images', function() {
