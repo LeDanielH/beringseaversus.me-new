@@ -5,3 +5,6 @@ node_modules
 devel/assets/_bower_components
 .idea
 *.log
+devel/_pages/**/*.css
+devel/_pages/**/*.min.css
+devel/_pages/**/*.min.css.gz
