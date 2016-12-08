@@ -1,8 +1,7 @@
 var devel = 'devel/';
 var deploy = 'deploy/';
 var assetsSrc = devel + 'assets/';
-var bower = assetsSrc + '/_bower_components/';
-
+var bower = 'bower_components/';
 
 var paths = {
 

@@ -19,7 +19,7 @@ gulp.task('process-styles', [], function() {
 		.pipe(processSass({
 			outputStyle: 'expanded'
 		}).on('error', processSass.logError))
-		.pipe(purgeCss())
+		//.pipe(purgeCss())
 		.pipe(stripCssComments())
 		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
 		.pipe(autoprefixer({
@@ -43,7 +43,7 @@ gulp.task('process-styles-modular', [], function() {
 		.pipe(processSass({
 			outputStyle: 'expanded'
 		}).on('error', processSass.logError))
-		.pipe(purgeCss())
+		//.pipe(purgeCss())
 		.pipe(stripCssComments())
 		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
 		.pipe(autoprefixer({

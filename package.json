@@ -30,7 +30,8 @@
     "gulp-sourcemaps": "^1.9.1",
     "gulp-strip-css-comments": "^1.2.0",
     "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
-    "jshint": "^2.9.4"
+    "gulp-util": "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.7.tgz",
+    "jshint": "^2.9.4",
+    "run-sequence": "^1.2.2"
   }
 }

@@ -12,6 +12,7 @@ var vars = require('./vars'),
 
 // for scripts in one folder for the whole project
 gulp.task('process-scripts', function() {
+	console.log()
 	return gulp.src([
 		vars.paths.scripts.all.src + 'index.js',
 		vars.paths.scripts.all.src + '**/*.js'
@@ -24,12 +25,12 @@ gulp.task('process-scripts', function() {
 	.pipe(concat(vars.renderedNames.javascript.scripts))
 	.pipe(checkJs())
 	.pipe(sourcemaps.write())
-	.pipe(gulp.dest(vars.paths.scripts.dest))
+	.pipe(gulp.dest(vars.paths.scripts.all.dest))
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.scripts.dest))
+	.pipe(gulp.dest(vars.paths.scripts.all.dest))
 	.pipe(gzip())
-	.pipe(gulp.dest(vars.paths.scripts.dest))
+	.pipe(gulp.dest(vars.paths.scripts.all.dest))
 	.pipe(localServer.reload());
 });
 

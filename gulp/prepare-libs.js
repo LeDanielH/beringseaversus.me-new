@@ -43,6 +43,7 @@ gulp.task('prepare-js-gsap', function() {
 
 /* SASS LIBS */
 for (var key in vars.paths.libsSass) {
+	if (!vars.paths.libsSass.hasOwnProperty(key)) continue;
 	(function (key) {
 		gulp.task('prepare-sass-'+ key, function() {
 			return gulp.src([
@@ -55,6 +56,7 @@ for (var key in vars.paths.libsSass) {
 
 /* FONTS LIBS */
 for (var key in vars.paths.fonts) {
+	if (!vars.paths.fonts.hasOwnProperty(key)) continue;
 	(function (key) {
 		gulp.task('prepare-fonts-'+ key, function() {
 			return gulp.src([
@@ -67,6 +69,7 @@ for (var key in vars.paths.fonts) {
 
 /* IMAGES LIBS */
 for (var key in vars.paths.images) {
+	if (!vars.paths.images.hasOwnProperty(key)) continue;
 	(function (key) {
 		gulp.task('prepare-images-'+ key, function() {
 			return gulp.src([
