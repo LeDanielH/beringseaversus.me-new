@@ -4,23 +4,8 @@ categories:
   - story
 featured: true
 tags: fishing
-colors:
-  - red
-  - green
-  - blue
+
 ---
-<script>
-	var categories = {{ page.categories | jsonify }};
-	var posts = [
-		{% for post in site.posts %}
-			{
-				"title": "{{ post.title }}",
-				"category": {{ post.categories | jsonify }},
-				"url": "{{ post.url }}"
-			}
-			{% unless forloop.last %},{% endunless %}
-		{% endfor %}
-	];
-</script>
 
 <h1>Hello Daniel</h1>
+My name is asshole

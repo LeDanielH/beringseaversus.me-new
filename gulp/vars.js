@@ -21,7 +21,7 @@ var paths = {
 
 		all: {
 			src: assetsSrc + '_sass/*.+(scss|sass)', // will process only files without prepended underscore
-			dest: assetsSrc + 'css/',
+			dest: assetsSrc + 'generated/',
 			watch: assetsSrc + '_sass/**/*.+(scss|sass)'
 		}
 	},
@@ -34,7 +34,8 @@ var paths = {
 		},
 		all: {
 			src: assetsSrc + '_scripts/',
-			dest: assetsSrc
+			dest: assetsSrc + 'generated/',
+			watch: assetsSrc + '_scripts/**/*.js'
 		}
 	},
 

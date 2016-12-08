@@ -1,13 +1,5 @@
-<meta name="description" content="{{ page.description }}">
-<meta rel="author" content="{{ site.data.template.author-name }}">
-<meta name="publisher" content="{{ site.data.template.author-name }}">
-<meta name="copyright" content="{{ site.data.template.copyright }}">
-<meta name="google-site-verification" content="{{ site.data.template.google-webmasters-verification }}" />
-<meta name="owner" content="{{ site.data.template.author }}">
-
-<!-- OG -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="">
-<meta property="og:image" content="">
-<meta property="og:url" content="">
-<meta property="og:description" content="">
+{% for item in site.data.template.meta %}
+	{% for nesteditem in item %}
+	<meta property="{{ nesteditem[0] }}" content="{{ nesteditem[1] }}">
+	{% endfor %}
+{% endfor %}

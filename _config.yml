@@ -22,7 +22,7 @@ port:         9876
 url: ""
 
 # does not include hostname, this is what goes after url(like project folder on github), always prepend with slash, can leave this blank
-baseurl: /beringseaversus.me
+baseurl: ""
 show_dir_listing: true
 
 # where you develop

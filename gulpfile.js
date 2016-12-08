@@ -12,17 +12,15 @@ require('./gulp/deployment');
 
 gulp.task('watch', function() {
 	gulp.watch(vars.paths.html.src, ['jekyll']);
-	gulp.watch(vars.paths.styles.all.src, ['process-styles']);
-	gulp.watch(vars.paths.scripts.all.src, ['process-scripts']);
+	gulp.watch(vars.paths.styles.all.watch, ['process-styles']);
+	gulp.watch(vars.paths.scripts.all.watch, ['process-scripts']);
 });
 
 gulp.task('watch-modular', function() {
 	gulp.watch(vars.paths.html.src);
-	gulp.watch(vars.paths.styles.modular.src, ['process-styles-modular']);
-	gulp.watch(vars.paths.scripts.modular.src, ['process-scripts-modular']);
+	gulp.watch(vars.paths.styles.modular.watch, ['process-styles-modular']);
+	gulp.watch(vars.paths.scripts.modular.watch, ['process-scripts-modular']);
 });
-
-
 
 gulp.task('default', [
 	'process-styles',

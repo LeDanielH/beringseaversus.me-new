@@ -1,5 +1,5 @@
 {% if site.environment == 'development' %}
-	<script src="assets/js/scripts.js"></script>
+	<script src="{{ site.data.template.codes-path }}scripts.js"></script>
 	{% else %}
-	<script src="assets/js/scripts.min.js"></script>
+	<script src="{{ site.data.template.codes-path }}scripts.min.js"></script>
 {% endif %}

@@ -2,7 +2,6 @@ deploy
 .sass-cache
 .jekyll-metadata
 node_modules
-devel/assets/_bower_components
 .idea
 *.log
 devel/_pages/**/*.css

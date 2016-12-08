@@ -8,21 +8,35 @@ author-website: 'https://ledanielh.github.io'
 header: 'beringseaversusme-header-2.jpg'
 background: 'background.jpg'
 logo: 'beringseaversusme-logo.png'
-google-font: 'http://fonts.googleapis.com/css?family=Arimo:400,700,400italic|Oswald:300,700'
-libjs: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js'
-libcss: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css'
+
+
 copyright: '&copy; beringseaversus.me 2016'
 
-# metatag
-title: BERINGSEAVERSUS.ME
-description: A website about the work of fisherman in the Bering Sea
-rel-author: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
-rel-publisher: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
-google-webmasters-verification: uF8DPolZsm8V3xIZYmwNFUIEB5AWNwgDXRMGOO3PtrQ
+meta:
+  - title: BERINGSEAVERSUS.ME
+  - description: A website about the work of fisherman in the Bering Sea
+  - author: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
+  - publisher: 'https://plus.google.com/u/0/+DanielHoksza/posts/p/pub'
+  - google-site-verification: 'uF8DPolZsm8V3xIZYmwNFUIEB5AWNwgDXRMGOO3PtrQ'
+#  - owner: ''
+#  - copyright: ''
+#  - og&colon;type: ''
+#  - og&colon;title: ''
+#  - og&colon;image: ''
+#  - og&colon;url: ''
+#  - og&colon;description: ''
 
-# assets versions
-jquery: 3.1.1
-semantic-ui: 2.2.6
+cdnjs:
+  - jquery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+  - semanticuijs: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js'
+#  - jqueryslim: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+
+cdncss:
+  - semanticuicss: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css'
+#  - google-font: 'http://fonts.googleapis.com/css?family=Arimo:400,700,400italic|Oswald:300,700'
+
+# code paths
+codes-path: assets/generated/
 
 # social
 social:

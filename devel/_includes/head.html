@@ -8,14 +8,11 @@
 	<script>
 		document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 	</script>
-	{% if page.layout == "post" %}
-		{% include head/assets-post.html %}
-	{% elsif page.layout == "app" %}
-		{% include head/assets-modular.html %}
-	{% endif %}
 	{% include head/meta.html %}
 	{% include head/icons.html %}
-	{% include head/analytics.html %}
 	{% include head/feed.html %}
-
+	{% include head/cdns.html %}
+	{% include head/assets.html %}
+	{% include head/analytics.html %}
 </head>
+

@@ -1,22 +1,21 @@
-$(window).load(function () {
-	scrollToOnLoad();
-	goBack();
-});
-
-function scrollToOnLoad() {
-	var $currentHash = window.location.hash;
-	var $page = $('.nav').find('a[href="' + $currentHash + '"]');
-
-	if ($product.length) {
-		$product.trigger('click');
-		setTimeout(function() {
-			$('html, body').animate({
-				scrollTop: $('.wrapper-products').offset().top
-			}, 300);
-		}, 600);
-	}
-}
-
+//$(window).load(function () {
+//	scrollToOnLoad();
+//	goBack();
+//});
+//
+//function scrollToOnLoad() {
+//	var $currentHash = window.location.hash;
+//	var $page = $('.nav').find('a[href="' + $currentHash + '"]');
+//
+//	if ($product.length) {
+//		$product.trigger('click');
+//		setTimeout(function() {
+//			$('html, body').animate({
+//				scrollTop: $('.wrapper-products').offset().top
+//			}, 300);
+//		}, 600);
+//	}
+//}
 
 var Ajax = {
 	$navWrapper: $('.nav'),
