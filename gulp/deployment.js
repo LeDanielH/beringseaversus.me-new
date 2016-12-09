@@ -11,17 +11,8 @@ gulp.task('deploy', function() {
 	.pipe(deploy());
 });
 
-// DEFAULT TASKS
-//gulp.task('localServer', [], function() {
-//	localServer.server({
-//		root: vars.paths.html.dest,
-//		livereload: true,
-//		fallback: vars.paths.html.dest + 'index.html'
-//	});
-//});
-
 gulp.task('jekyll', function (gulpCallBack) {
-	var jekyll = spawn('bundle', ['exec', 'jekyll', 'build'], {stdio: 'inherit'});
+	var jekyll = spawn('bundle', ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
 
 	jekyll.on('exit', function(code) {
 		gulpCallBack(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
@@ -37,6 +28,5 @@ gulp.task('localServer', function () {
 			baseDir: vars.paths.html.dest
 		}
 	});
-	// add watch here
 });
 

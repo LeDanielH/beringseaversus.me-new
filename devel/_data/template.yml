@@ -36,7 +36,7 @@ cdncss:
 #  - google-font: 'http://fonts.googleapis.com/css?family=Arimo:400,700,400italic|Oswald:300,700'
 
 # code paths
-codes-path: assets/generated/
+codes-path: /assets/generated/
 
 # social
 social:

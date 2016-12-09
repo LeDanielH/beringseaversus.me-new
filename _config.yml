@@ -19,17 +19,16 @@ host:         127.0.0.1
 port:         9876
 
  # url the deploy folder will be uploaded to / the base hostname & protocol for your site
-url: ""
+url: "localhost"
 
 # does not include hostname, this is what goes after url(like project folder on github), always prepend with slash, can leave this blank
 baseurl: ""
-show_dir_listing: true
 
 # where you develop
 source:       devel
 
 # folder with final product
-destination:  deploy
+destination:  ./deploy
 
 # can leave this blank, useful for posts - will get the post date with you current timezone
 timezone:     Europe/Prague
@@ -54,6 +53,7 @@ compress_html:
   blanklines: true
 
 # this is where I set paths for each type of template
+
 defaults:
   -
     scope:

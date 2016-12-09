@@ -1,7 +1,7 @@
 var vars = require('./vars'),
 	gulp = require('gulp'),
 	duplicate = require('gulp-rename'),
-	gzip = require('gulp-gzip'),
+	//gzip = require('gulp-gzip'),
 	localServer = require('gulp-connect'),
 	concat = require('gulp-concat'),
 	uglifyJs = require('gulp-uglify'),
@@ -12,7 +12,6 @@ var vars = require('./vars'),
 
 // for scripts in one folder for the whole project
 gulp.task('process-scripts', function() {
-	console.log()
 	return gulp.src([
 		vars.paths.scripts.all.src + 'index.js',
 		vars.paths.scripts.all.src + '**/*.js'
@@ -29,8 +28,8 @@ gulp.task('process-scripts', function() {
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())
 	.pipe(gulp.dest(vars.paths.scripts.all.dest))
-	.pipe(gzip())
-	.pipe(gulp.dest(vars.paths.scripts.all.dest))
+	//.pipe(gzip())
+	//.pipe(gulp.dest(vars.paths.scripts.all.dest))
 	.pipe(localServer.reload());
 });
 
@@ -48,8 +47,8 @@ gulp.task('process-scripts-modular', function() {
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())
 	.pipe(gulp.dest(vars.paths.scripts.modular.dest))
-	.pipe(gzip())
-	.pipe(gulp.dest(vars.paths.scripts.modular.dest))
+	//.pipe(gzip())
+	//.pipe(gulp.dest(vars.paths.scripts.modular.dest))
 	.pipe(localServer.reload());
 });
 

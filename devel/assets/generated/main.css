@@ -1,8 +1,11 @@
 p {
 	font-size: 100px;
 	font-family: Arial, sans-serif;
+	font-weight: bold;
 }
 h1 {
 	font-family: sans-serif;
+	font-size: 67px;
+	color: aqua;
 }
 

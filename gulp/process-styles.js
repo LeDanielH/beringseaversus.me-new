@@ -4,7 +4,7 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var duplicate = require('gulp-rename');
-var gzip = require('gulp-gzip');
+//var gzip = require('gulp-gzip');
 var localServer = require('gulp-connect');
 var processSass = require('gulp-sass');
 var nanofyCss = require('gulp-cssnano');
@@ -32,8 +32,8 @@ gulp.task('process-styles', [], function() {
 		.pipe(duplicate({suffix: '.min'}))
 		.pipe(nanofyCss())
 		.pipe(gulp.dest(vars.paths.styles.all.dest))
-		.pipe(gzip())
-		.pipe(gulp.dest(vars.paths.styles.all.dest))
+		//.pipe(gzip())
+		//.pipe(gulp.dest(vars.paths.styles.all.dest))
 		.pipe(localServer.reload());
 });
 
@@ -56,7 +56,7 @@ gulp.task('process-styles-modular', [], function() {
 		.pipe(duplicate({suffix: '.min'}))
 		.pipe(nanofyCss())
 		.pipe(gulp.dest(vars.paths.styles.modular.dest))
-		.pipe(gzip())
-		.pipe(gulp.dest(vars.paths.styles.modular.dest))
+		//.pipe(gzip())
+		//.pipe(gulp.dest(vars.paths.styles.modular.dest))
 		.pipe(localServer.reload());
 });

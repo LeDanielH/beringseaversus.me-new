@@ -11,7 +11,6 @@ require('./gulp/merge-js-libs');
 require('./gulp/deployment');
 
 gulp.task('watch', function() {
-	gulp.watch(vars.paths.html.src, ['jekyll']);
 	gulp.watch(vars.paths.styles.all.watch, ['process-styles']);
 	gulp.watch(vars.paths.scripts.all.watch, ['process-scripts']);
 });
@@ -23,14 +22,12 @@ gulp.task('watch-modular', function() {
 });
 
 gulp.task('default', [
-	'process-styles',
-	'process-scripts',
 	'jekyll',
 	'localServer',
 	'watch'
 ]);
 
-gulp.task('offline', [
+gulp.task('offline-assets', [
 	'prepare-libs',
 	'merge-js-libs'
 ]);
