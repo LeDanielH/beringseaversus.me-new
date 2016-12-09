@@ -1,5 +1,8 @@
+p {
+	font-size: 100px;
+	font-family: Arial, sans-serif;
+}
 h1 {
-  font-family: sans-serif;
+	font-family: sans-serif;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm15LXN0eWxlcy9zZWN0aW9ucy9fc2VjdGlvbnMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNDLHdCQUF3QjtDQUN4QiIsImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImgxIHtcblx0Zm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7XG59XG4iXX0= */

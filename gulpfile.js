@@ -30,7 +30,7 @@ gulp.task('default', [
 	'watch'
 ]);
 
-gulp.task('prepare-assets', [
+gulp.task('offline', [
 	'prepare-libs',
 	'merge-js-libs'
 ]);

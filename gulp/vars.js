@@ -2,6 +2,7 @@ var devel = 'devel/';
 var deploy = 'deploy/';
 var assetsSrc = devel + 'assets/';
 var bower = 'bower_components/';
+var offline = assetsSrc + 'offline/';
 
 var paths = {
 
@@ -20,7 +21,7 @@ var paths = {
 		},
 
 		all: {
-			src: assetsSrc + '_sass/*.+(scss|sass)', // will process only files without prepended underscore
+			src: assetsSrc + '_sass/main.scss', // will process only files without prepended underscore
 			dest: assetsSrc + 'generated/',
 			watch: assetsSrc + '_sass/**/*.+(scss|sass)'
 		}
@@ -39,122 +40,78 @@ var paths = {
 		}
 	},
 
-	images: {
-		semantic: {
-			src: bower + 'semantic-ui-sass/app/assets/images/**/*.+(jpg|png|svg)',
-			dest: assetsSrc + 'images/semantic/'
-		}
-	},
+	sassUtils: {
 
-	fonts: {
-		semantic: {
-			src: bower + 'semantic-ui-sass/app/assets/fonts/**/*.+(eot|ttf|woff|woff2|svg)',
-			dest: assetsSrc + 'fonts/semantic/'
-		}
-	},
-
-	libsSass: {
-		semantic: {
-			src: bower + 'semantic-ui-sass/app/assets/stylesheets/**/*.+(scss|sass)',
-			dest: assetsSrc + '_sass/libs/semantic/'
-		},
 		bourbon: {
 			src: bower + 'bourbon/app/assets/stylesheets/**/*.+(scss|sass)',
-			dest: assetsSrc + '_sass/libs/bourbon/'
+			dest: assetsSrc + '_sass/utils/bourbon/'
 		},
 		normalize: {
 			src: bower + 'normalize-scss/sass/**/*.+(scss|sass)',
-			dest: assetsSrc + '_sass/libs/normalize/'
+			dest: assetsSrc + '_sass/utils/normalize/'
 		}
 	},
 
-	libsJS: {
+	libs: {
 		jquery: {
-			src: {
-				min: bower + 'jquery/dist/jquery.min.js',
-				debug: bower + 'jquery/dist/jquery.js',
-				slim: bower + 'jquery/dist/jquery.slim.min.js'
-			},
-			dest: assetsSrc + 'jslibs/transfered/jquery/'
+			src: bower + 'jquery/dist/jquery.min.js',
+			dest: offline
+		},
+
+		jquerySlim: {
+			src: bower + 'jquery/dist/jquery.slim.min.js',
+			dest: offline
 		},
 
 		semantic: {
-			src: {
-				min: bower + 'semantic-ui-sass/app/assets/javascripts/semantic-ui.js', // does not have minified version
-				debug: bower + 'semantic-ui-sass/app/assets/javascripts/semantic-ui.js',
-				modular: bower + 'semantic-ui-sass/app/assets/javascripts/**/*.js'
-			},
-			dest: assetsSrc + 'jslibs/transfered/semantic/'
+			src: bower + 'semantic/dist/**/*',
+			dest: offline + 'semantic',
+			js: bower + 'semantic/dist/semantic.min.js'
 		},
 
 		vue: {
-			src: {
-				min: bower + 'vue/dist/vue.min.js',
-				debug: bower + 'vue/dist/vue.js'
-			},
-			dest: assetsSrc + 'jslibs/transfered/vue/'
+			src: bower + 'vue/dist/vue.min.js',
+			dest: offline
 		},
 
 		vueX: {
-			src: {
-				min: bower + 'vuex/dist/vuex.min.js',
-				debug: bower + 'vuex/dist/vuex.js'
-			},
-			dest: assetsSrc + 'jslibs/transfered/vue/'
+			src: bower + 'vuex/dist/vuex.min.js',
+			dest: offline
 		},
 
 		vueRouter: {
-			src: {
-				min: bower + 'vue-router/dist/vue-router.min.js',
-				debug: bower + 'vue-router/dist/vue-router.js'
-			},
-			dest: assetsSrc + 'jslibs/transfered/vue/'
+			src: bower + 'vue-router/dist/vue-router.min.js',
+			dest: offline
 		},
 
 		vueResource: {
-			src: {
-				min: bower + 'vue-resource/dist/vue-resource.min.js',
-				debug: bower + 'vue-resource/dist/vue-resource.js'
-			},
-			dest: assetsSrc + 'jslibs/transfered/vue/'
+			src: bower + 'vue-resource/dist/vue-resource.min.js',
+			dest: offline
 		},
 
 		gsap: {
-			src: {
-				min: bower + 'gsap/src/minified/**/*.js',
-				debug: bower + 'gsap/src/uncompressed/**/*.js'
-			},
-			dest: assetsSrc + 'jslibs/transfered/gsap/'
+			src: bower + 'gsap/src/minified/**/*.js',
+			dest: offline + 'gsap/'
 		}
 	},
-	libsJSMerged: {
-		dest: assetsSrc + 'jslibs/merged/'
+
+	merged: {
+		dest: offline + 'merged/'
 	}
 };
 
 
 var renderedNames = {
 	javascript: {
-		// my scripts
+
+		/* MY MERGED JAVASCRIPT */
 		scripts: 'scripts.js',
 
-		// libs
-		semantic: {
-			debug: 'semantic.js',
-			min: 'semantic.min.js'
-		},
-		vue: {
-			debug: 'vue.js',
-			min: 'vue.min.js'
-		},
-		all: {
-			debug: 'libs.js',
-			min: 'libs.min.js'
-		},
-		banners: {
-			debug: 'banner.js',
-			min: 'banner.min.js'
-		}
+		/* MERGED LIBS */
+		semantic:'semantic.min.js',
+		vue: 'vue.min.js',
+		banners: 'banner.js',
+		all: 'libs.min.js'
 	}
 };
 

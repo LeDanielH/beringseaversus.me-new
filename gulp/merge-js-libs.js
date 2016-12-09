@@ -6,55 +6,55 @@ var vars = require('./vars'),
 
 gulp.task('merge-js-semantic', function() {
 	return gulp.src([
-		vars.paths.libsJS.jquery.src.min,
-		vars.paths.libsJS.semantic.src.min
+		vars.paths.libs.jquery.src,
+		vars.paths.libs.semantic.js
 	])
-	.pipe(concat(vars.renderedNames.javascript.semantic.min))
+	.pipe(concat(vars.renderedNames.javascript.semantic))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest))
+	.pipe(gulp.dest(vars.paths.merged.dest))
 	.pipe(gzip())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest));
+	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 
 gulp.task('merge-js-vue', function() {
 	return gulp.src([
-		vars.paths.libsJS.vue.src.min,
-		vars.paths.libsJS.vueX.src.min,
-		vars.paths.libsJS.vueRouter.src.min,
-		vars.paths.libsJS.vueResource.src.min
+		vars.paths.libs.vue.src,
+		vars.paths.libs.vueX.src,
+		vars.paths.libs.vueRouter.src,
+		vars.paths.libs.vueResource.src
 	])
-	.pipe(concat(vars.renderedNames.javascript.vue.min))
+	.pipe(concat(vars.renderedNames.javascript.vue))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest))
+	.pipe(gulp.dest(vars.paths.merged.dest))
 	.pipe(gzip())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest));
+	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 
 gulp.task('merge-js-all', function() {
 	return gulp.src([
-		vars.paths.libsJS.jquery.src.min,
-		vars.paths.libsJS.semantic.src.min,
-		vars.paths.libsJS.vue.src.min,
-		vars.paths.libsJS.vueX.src.min,
-		vars.paths.libsJS.vueRouter.src.min,
-		vars.paths.libsJS.vueResource.src.min
+		vars.paths.libs.jquery.src,
+		vars.paths.libs.semantic.src,
+		vars.paths.libs.vue.src,
+		vars.paths.libs.vueX.src,
+		vars.paths.libs.vueRouter.src,
+		vars.paths.libs.vueResource.src
 	])
-	.pipe(concat(vars.renderedNames.javascript.all.min))
+	.pipe(concat(vars.renderedNames.javascript.all))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest))
+	.pipe(gulp.dest(vars.paths.merged.dest))
 	.pipe(gzip())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest));
+	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 
 gulp.task('merge-js-banners', function() {
 	return gulp.src([
-		vars.paths.libsJS.jquery.src.slim,
+		vars.paths.libs.jquerySlim.src
 	])
-	.pipe(concat(vars.renderedNames.javascript.banners.min))
+	.pipe(concat(vars.renderedNames.javascript.banners))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest))
+	.pipe(gulp.dest(vars.paths.merged.dest))
 	.pipe(gzip())
-	.pipe(gulp.dest(vars.paths.libsJSMerged.dest));
+	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 
 gulp.task('merge-js-libs', [

@@ -13,20 +13,21 @@ var stripCssComments = require('gulp-strip-css-comments');
 var purifyCss = require('gulp-purifycss');
 
 gulp.task('process-styles', [], function() {
+	console.log(vars.paths.styles.all.src,vars.paths.styles.all.dest );
 	return gulp.src([vars.paths.styles.all.src])
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(processSass({
 			outputStyle: 'expanded'
 		}).on('error', processSass.logError))
-		//.pipe(purgeCss())
+		.pipe(sourcemaps.write())
+		.pipe(purgeCss())
 		.pipe(stripCssComments())
 		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
 		.pipe(autoprefixer({
 			cascade: false,
 			browsers: ['ie >= 10']
 		}))
-		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(vars.paths.styles.all.dest))
 		.pipe(duplicate({suffix: '.min'}))
 		.pipe(nanofyCss())
@@ -43,14 +44,14 @@ gulp.task('process-styles-modular', [], function() {
 		.pipe(processSass({
 			outputStyle: 'expanded'
 		}).on('error', processSass.logError))
-		//.pipe(purgeCss())
+		.pipe(sourcemaps.write())
+		.pipe(purgeCss())
 		.pipe(stripCssComments())
 		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
 		.pipe(autoprefixer({
 			cascade: false,
 			browsers: ['ie >= 10']
 		}))
-		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(vars.paths.styles.modular.dest))
 		.pipe(duplicate({suffix: '.min'}))
 		.pipe(nanofyCss())

@@ -1,95 +1,36 @@
 var vars = require('./vars'),
 	gulp = require('gulp'),
 	gzip = require('gulp-gzip'),
-	concat = require('gulp-concat'),
-	uglifyJs = require('gulp-uglify');
+	concat = require('gulp-concat');
 
-gulp.task('prepare-js-jquery', function() {
-	return gulp.src([
-		vars.paths.libsJS.jquery.src.min,
-		vars.paths.libsJS.jquery.src.slim
-	])
-	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJS.jquery.dest));
-});
-
-gulp.task('prepare-js-semantic', function() {
-	return gulp.src([
-		vars.paths.libsJS.semantic.src.modular
-	])
-	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJS.semantic.dest));
-});
-
-gulp.task('prepare-js-vue', function() {
-	return gulp.src([
-		vars.paths.libsJS.vue.src.min,
-		vars.paths.libsJS.vueX.src.min,
-		vars.paths.libsJS.vueRouter.src.min,
-		vars.paths.libsJS.vueResource.src.min
-	])
-	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJS.vue.dest));
-});
-
-gulp.task('prepare-js-gsap', function() {
-	return gulp.src([
-		vars.paths.libsJS.gsap.src.min
-	])
-	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.libsJS.gsap.dest));
-});
-
-
-/* SASS LIBS */
-for (var key in vars.paths.libsSass) {
-	if (!vars.paths.libsSass.hasOwnProperty(key)) continue;
-	(function (key) {
-		gulp.task('prepare-sass-'+ key, function() {
+/* SASS UTILS */
+var prepareLibsTasks = [];
+for (var item in vars.paths.sassUtils) {
+	if (!vars.paths.sassUtils.hasOwnProperty(item)) continue;
+	(function (item) {
+		gulp.task('prepare-sass-'+ item, function() {
 			return gulp.src([
-				vars.paths.libsSass[key].src
+				vars.paths.sassUtils[item].src
 			])
-			.pipe(gulp.dest(vars.paths.libsSass[key].dest));
+			.pipe(gulp.dest(vars.paths.sassUtils[item].dest));
 		});
-	})(key);
+	})(item);
+	prepareLibsTasks.push('prepare-sass-' + item);
 }
 
-/* FONTS LIBS */
-for (var key in vars.paths.fonts) {
-	if (!vars.paths.fonts.hasOwnProperty(key)) continue;
-	(function (key) {
-		gulp.task('prepare-fonts-'+ key, function() {
+/* LIBS */
+
+for (var item in vars.paths.libs) {
+	if (!vars.paths.libs.hasOwnProperty(item)) continue;
+	(function (item) {
+		gulp.task('prepare-libs-'+ item, function() {
 			return gulp.src([
-				vars.paths.fonts[key].src
+				vars.paths.libs[item].src
 			])
-			.pipe(gulp.dest(vars.paths.fonts[key].dest));
+			.pipe(gulp.dest(vars.paths.libs[item].dest));
 		});
-	})(key);
+	})(item);
+	prepareLibsTasks.push('prepare-libs-' + item);
 }
 
-/* IMAGES LIBS */
-for (var key in vars.paths.images) {
-	if (!vars.paths.images.hasOwnProperty(key)) continue;
-	(function (key) {
-		gulp.task('prepare-images-'+ key, function() {
-			return gulp.src([
-				vars.paths.images[key].src
-			])
-			.pipe(gulp.dest(vars.paths.images[key].dest));
-		});
-	})(key);
-}
-
-
-
-gulp.task('prepare-libs', [
-	'prepare-js-jquery',
-	'prepare-js-semantic',
-	'prepare-js-vue',
-	'prepare-js-gsap',
-	'prepare-sass-semantic',
-	'prepare-sass-bourbon',
-	'prepare-sass-normalize',
-	'prepare-fonts-semantic',
-	'prepare-images-semantic'
-]);
+gulp.task('prepare-libs', prepareLibsTasks);
