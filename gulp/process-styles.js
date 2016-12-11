@@ -4,7 +4,6 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var duplicate = require('gulp-rename');
-//var gzip = require('gulp-gzip');
 var localServer = require('gulp-connect');
 var processSass = require('gulp-sass');
 var nanofyCss = require('gulp-cssnano');
@@ -32,13 +31,11 @@ gulp.task('process-styles', [], function() {
 		.pipe(duplicate({suffix: '.min'}))
 		.pipe(nanofyCss())
 		.pipe(gulp.dest(vars.paths.styles.all.dest))
-		//.pipe(gzip())
-		//.pipe(gulp.dest(vars.paths.styles.all.dest))
 		.pipe(localServer.reload());
 });
 
-gulp.task('process-styles-modular', [], function() {
-	return gulp.src([vars.paths.styles.modular.src])
+gulp.task('process-styles-banners', [], function() {
+	return gulp.src([vars.paths.styles.banners.src])
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(processSass({
@@ -52,11 +49,9 @@ gulp.task('process-styles-modular', [], function() {
 			cascade: false,
 			browsers: ['ie >= 10']
 		}))
-		.pipe(gulp.dest(vars.paths.styles.modular.dest))
+		.pipe(gulp.dest(vars.paths.styles.banners.dest))
 		.pipe(duplicate({suffix: '.min'}))
 		.pipe(nanofyCss())
-		.pipe(gulp.dest(vars.paths.styles.modular.dest))
-		//.pipe(gzip())
-		//.pipe(gulp.dest(vars.paths.styles.modular.dest))
+		.pipe(gulp.dest(vars.paths.styles.banners.dest))
 		.pipe(localServer.reload());
 });

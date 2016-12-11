@@ -11,8 +11,8 @@ gulp.task('merge-js-semantic', function() {
 	])
 	.pipe(concat(vars.renderedNames.javascript.semantic))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.merged.dest))
-	.pipe(gzip())
+	// .pipe(gulp.dest(vars.paths.merged.dest))
+	// .pipe(gzip())
 	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 
@@ -25,8 +25,8 @@ gulp.task('merge-js-vue', function() {
 	])
 	.pipe(concat(vars.renderedNames.javascript.vue))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.merged.dest))
-	.pipe(gzip())
+	// .pipe(gulp.dest(vars.paths.merged.dest))
+	// .pipe(gzip())
 	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 
@@ -41,8 +41,8 @@ gulp.task('merge-js-all', function() {
 	])
 	.pipe(concat(vars.renderedNames.javascript.all))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.merged.dest))
-	.pipe(gzip())
+	// .pipe(gulp.dest(vars.paths.merged.dest))
+	// .pipe(gzip())
 	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 
@@ -52,8 +52,8 @@ gulp.task('merge-js-banners', function() {
 	])
 	.pipe(concat(vars.renderedNames.javascript.banners))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.merged.dest))
-	.pipe(gzip())
+	// .pipe(gulp.dest(vars.paths.merged.dest))
+	// .pipe(gzip())
 	.pipe(gulp.dest(vars.paths.merged.dest));
 });
 

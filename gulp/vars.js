@@ -3,6 +3,7 @@ var deploy = 'deploy/';
 var assetsSrc = devel + 'assets/';
 var bower = 'bower_components/';
 var offline = assetsSrc + 'offline/';
+var banners = devel + '_pages/'
 
 var paths = {
 
@@ -14,24 +15,24 @@ var paths = {
 	},
 
 	styles: {
-		modular: { // for example banners
-			src: devel + '_pages/**/*.+(scss|sass)',
-			dest: devel + '_pages/',
-			watch: devel + '_pages/**/*.+(scss|sass)'
+		banners: { // for example banners
+			src: banners + '**/*.+(scss|sass)',
+			dest: banners,
+			watch: banners + '**/*.+(scss|sass)'
 		},
 
 		all: {
-			src: assetsSrc + '_sass/main.scss', // will process only files without prepended underscore
+			src: assetsSrc + '_sass/main.scss',
 			dest: assetsSrc + 'generated/',
 			watch: assetsSrc + '_sass/**/*.+(scss|sass)'
 		}
 	},
 
 	scripts: {
-		modular: {
-			src: devel + '_pages/**/*.js',
-			dest: devel + '_pages/',
-			watch: devel +  '_pages/**/*.js'
+		banners: {
+			src: banners + '**/*.js',
+			dest: banners,
+			watch: banners + '**/*.js'
 		},
 		all: {
 			src: assetsSrc + '_scripts/',

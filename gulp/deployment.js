@@ -12,11 +12,13 @@ gulp.task('deploy', function() {
 });
 
 gulp.task('jekyll', function (gulpCallBack) {
-	var jekyll = spawn('bundle', ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
+	console.log('jekyll runs 1')
+	var jekyll = spawn('bundle.bat', ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
 
 	jekyll.on('exit', function(code) {
 		gulpCallBack(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
 	});
+	console.log('jekyll runs 2')
 });
 
 

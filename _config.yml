@@ -21,11 +21,14 @@ port:         9876
  # url the deploy folder will be uploaded to / the base hostname & protocol for your site
 url: "localhost"
 
+# this is to prevent any plugins from running
+safe: true
+
 # does not include hostname, this is what goes after url(like project folder on github), always prepend with slash, can leave this blank
 baseurl: ""
 
 # where you develop
-source:       devel
+source:       ./devel
 
 # folder with final product
 destination:  ./deploy
@@ -34,7 +37,9 @@ destination:  ./deploy
 timezone:     Europe/Prague
 
 # this is what you don't want in deploy folder
-exclude:      ['node_modules', '.gitignore', 'gulpfile.js', 'package.json', 'bower.json', 'gulp', 'Gemfile', 'Gemfile.lock', 'feed.xml', 'page-with-example-code.html', npm-shrinkwrap.json, '**/*.sass', '**/*.scss', '_pages/**/main.css']
+exclude:
+  - '**/*.sass'
+  - '**/*.scss'
 
 # this is what you want in deploy folder
 include:      ['.htaccess']
@@ -44,8 +49,10 @@ incremental:  true
 
 # collections are used like list of things (albums, team members, companies in this case), if you want to create another collection, you have to make a folder in devel like that '_collectionname' and than include it here, just like I included companies
 collections:
-  companies:
-    output: true # this generates a page for each collection
+  banners:
+    output: true
+  pages:
+    output: true
 
 # removes blank lines from the final html
 compress_html:
@@ -69,7 +76,7 @@ defaults:
       layout:     post
   -
     scope:
-      type:       "companies"
+      type:       "banners"
     values:
-      permalink: /collections/:collection/:name/
-      layout: company
+      permalink: /:collection/:name/
+      layout:     banner

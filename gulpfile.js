@@ -15,10 +15,9 @@ gulp.task('watch', function() {
 	gulp.watch(vars.paths.scripts.all.watch, ['process-scripts']);
 });
 
-gulp.task('watch-modular', function() {
-	gulp.watch(vars.paths.html.src);
-	gulp.watch(vars.paths.styles.modular.watch, ['process-styles-modular']);
-	gulp.watch(vars.paths.scripts.modular.watch, ['process-scripts-modular']);
+gulp.task('watch-banners', function() {
+	gulp.watch(vars.paths.styles.banners.watch, ['process-styles-banners']);
+	gulp.watch(vars.paths.scripts.banners.watch, ['process-scripts-banners']);
 });
 
 gulp.task('default', [
@@ -27,14 +26,20 @@ gulp.task('default', [
 	'watch'
 ]);
 
+gulp.task('banners', [
+	'jekyll',
+	'localServer',
+	'watch-banners'
+]);
+
 gulp.task('offline-assets', [
 	'prepare-libs',
 	'merge-js-libs'
 ]);
 
 //gulp.task('banners', [
-//	'process-styles-modular',
-//	'process-scripts-modular',
+//	'process-styles-banners',
+//	'process-scripts-banners',
 //	'merge-js-banners',
 //	'watch'
 //],{});

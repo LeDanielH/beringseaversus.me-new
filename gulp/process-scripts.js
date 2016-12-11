@@ -1,7 +1,6 @@
 var vars = require('./vars'),
 	gulp = require('gulp'),
 	duplicate = require('gulp-rename'),
-	//gzip = require('gulp-gzip'),
 	localServer = require('gulp-connect'),
 	concat = require('gulp-concat'),
 	uglifyJs = require('gulp-uglify'),
@@ -28,27 +27,23 @@ gulp.task('process-scripts', function() {
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())
 	.pipe(gulp.dest(vars.paths.scripts.all.dest))
-	//.pipe(gzip())
-	//.pipe(gulp.dest(vars.paths.scripts.all.dest))
 	.pipe(localServer.reload());
 });
 
 // javascript file generated for each folder, useful for banners
-gulp.task('process-scripts-modular', function() {
+gulp.task('process-scripts-banners', function() {
 	return gulp.src([
-		vars.paths.scripts.modular.src
+		vars.paths.scripts.banners.src
 	])
 	.pipe(plumber())
 	.pipe(babel({
 		presets: ['es2015']
 	}))
 	.pipe(checkJs())
-	.pipe(gulp.dest(vars.paths.scripts.modular.dest))
+	.pipe(gulp.dest(vars.paths.scripts.banners.dest))
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.scripts.modular.dest))
-	//.pipe(gzip())
-	//.pipe(gulp.dest(vars.paths.scripts.modular.dest))
+	.pipe(gulp.dest(vars.paths.scripts.banners.dest))
 	.pipe(localServer.reload());
 });
 
