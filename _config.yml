@@ -51,8 +51,6 @@ incremental:  true
 collections:
   banners:
     output: true
-  pages:
-    output: true
 
 # removes blank lines from the final html
 compress_html:
@@ -62,12 +60,6 @@ compress_html:
 # this is where I set paths for each type of template
 
 defaults:
-  -
-    scope:
-      type:       "pages"
-    values:
-      # permalink:  /pages/ # pages live in the root directory by default
-      layout:     page
   -
     scope:
       type:       "posts"

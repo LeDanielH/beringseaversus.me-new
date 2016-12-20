@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install",
-    "start": "gulp"
+    "start": "gulp",
+    "deploy": "now -e MONGO_USER=@mongouser -e MONGO_PW=@mongopw"
   },
   "author": "Daniel Hoksza",
   "license": "ISC",
@@ -32,6 +33,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.7.tgz",
     "jshint": "^2.9.4",
+    "mongodb": "^2.2.16",
     "run-sequence": "^1.2.2"
   }
 }
