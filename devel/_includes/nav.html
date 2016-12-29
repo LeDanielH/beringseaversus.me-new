@@ -1,0 +1,24 @@
+<nav class="nav">
+	{% for page in site.pages %}
+		{% if page.title != null %}
+			<a class="nav__item" style="display: block;" href="{{ page.url | prepend: site.baseurl }}" class="nav__item">{{ page.title }}</a>
+		{% endif %}
+	{% endfor %}
+	{% for category in site.categories %}
+		<h4 class="nav__category">{{ category | first | upcase }}</h4>
+		{% for posts in category %}
+			{% for post in posts | reversed %}
+				{% if post.url %}
+					<a class="nav__item" style="display: block;" href="{{ post.url | prepend: site.baseurl }}" class="nav__item">{{ post.title }}</a>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	{% endfor %}
+	<h4 class="nav__category">MENTIONS</h4>
+	{% for link in site.data.navlinks %}
+		<a class="nav__item" style="display: block;" href="{{ link.url }}" class="nav__item">{{ link.title }}</a>
+	{% endfor %}
+</nav>
+
+
+
