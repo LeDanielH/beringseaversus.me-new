@@ -45,7 +45,7 @@ exclude:
 include:      ['.htaccess']
 
 # faster builds but inreliable
-incremental:  true
+incremental:  false
 
 # collections are used like list of things (albums, team members, companies in this case), if you want to create another collection, you have to make a folder in devel like that '_collectionname' and than include it here, just like I included companies
 collections:
