@@ -1,3 +1,14 @@
 <footer class="footer page__footer">
-
+	<nav class="nav__footer">
+		{% for post in site.posts %}
+			{% if post.footer == true %}
+				<a style="display: block;" class="nav__item nav__item--footer" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | upcase }}</a>
+			{% endif %}
+		{% endfor %}
+		{% for page in site.pages %}
+			{% if page.title != null and page.util == true %}
+				<a style="display: block;" class="nav__item nav__item--footer" href="{{ page.url | prepend: site.baseurl }}" class="nav__item">{{ page.title | upcase }}</a>
+			{% endif %}
+		{% endfor %}
+	</nav>
 </footer>
