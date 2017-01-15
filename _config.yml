@@ -9,13 +9,13 @@
 # baseurl: /beringseaversus.me
 # url: "http://yourdomain.com" #
 
-# set to production when you think you are done
+# set to production when you think you are done, will take minifed versions instead
 environment:  development
 
 # your localhost - no need for xampp or any bulshit like that
 host:         127.0.0.1
 
- # your localhost port
+ # your localhost port, same as in gulp/deployment.js for browser-sync
 port:         9876
 
  # url the deploy folder will be uploaded to / the base hostname & protocol for your site
@@ -45,7 +45,7 @@ exclude:
 include:      ['.htaccess']
 
 # faster builds but inreliable
-incremental:  false
+incremental:  true
 
 # collections are used like list of things (albums, team members, companies in this case), if you want to create another collection, you have to make a folder in devel like that '_collectionname' and than include it here, just like I included companies
 collections:
