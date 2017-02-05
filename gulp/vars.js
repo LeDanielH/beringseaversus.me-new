@@ -15,11 +15,6 @@ var paths = {
 	},
 
 	styles: {
-		banners: { // for example banners
-			src: banners + '**/*.+(scss|sass)',
-			dest: banners,
-			watch: banners + '**/*.+(scss|sass)'
-		},
 
 		all: {
 			src: assetsSrc + '_sass/main.scss',
@@ -29,11 +24,6 @@ var paths = {
 	},
 
 	scripts: {
-		banners: {
-			src: banners + '**/*.js',
-			dest: banners,
-			watch: banners + '**/*.js'
-		},
 		all: {
 			src: assetsSrc + '_scripts/',
 			dest: assetsSrc + 'generated/',
