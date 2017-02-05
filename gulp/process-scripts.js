@@ -9,7 +9,6 @@ var vars = require('./vars'),
 	babel = require('gulp-babel'),
 	checkJs = require('gulp-jshint');
 
-// for scripts in one folder for the whole project
 gulp.task('process-scripts', function() {
 	return gulp.src([
 		vars.paths.scripts.all.src + 'index.js',
@@ -27,23 +26,6 @@ gulp.task('process-scripts', function() {
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())
 	.pipe(gulp.dest(vars.paths.scripts.all.dest))
-	.pipe(localServer.reload());
-});
-
-// javascript file generated for each folder, useful for banners
-gulp.task('process-scripts-banners', function() {
-	return gulp.src([
-		vars.paths.scripts.banners.src
-	])
-	.pipe(plumber())
-	.pipe(babel({
-		presets: ['es2015']
-	}))
-	.pipe(checkJs())
-	.pipe(gulp.dest(vars.paths.scripts.banners.dest))
-	.pipe(duplicate({suffix: '.min'}))
-	.pipe(uglifyJs())
-	.pipe(gulp.dest(vars.paths.scripts.banners.dest))
 	.pipe(localServer.reload());
 });
 

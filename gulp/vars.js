@@ -70,26 +70,6 @@ var paths = {
 			js: bower + 'semantic/dist/semantic.min.js'
 		},
 
-		vue: {
-			src: bower + 'vue/dist/vue.min.js',
-			dest: offline
-		},
-
-		vueX: {
-			src: bower + 'vuex/dist/vuex.min.js',
-			dest: offline
-		},
-
-		vueRouter: {
-			src: bower + 'vue-router/dist/vue-router.min.js',
-			dest: offline
-		},
-
-		vueResource: {
-			src: bower + 'vue-resource/dist/vue-resource.min.js',
-			dest: offline
-		},
-
 		gsap: {
 			src: bower + 'gsap/src/minified/**/*.js',
 			dest: offline + 'gsap/'
@@ -110,8 +90,6 @@ var renderedNames = {
 
 		/* MERGED LIBS */
 		semantic:'semantic.min.js',
-		vue: 'vue.min.js',
-		banners: 'banner.js',
 		all: 'libs.min.js'
 	}
 };
