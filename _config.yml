@@ -49,7 +49,7 @@ incremental:  true
 
 # collections are used like list of things (albums, team members, companies in this case), if you want to create another collection, you have to make a folder in devel like that '_collectionname' and than include it here, just like I included companies
 collections:
-  banners:
+  companies:
     output: true
 
 # removes blank lines from the final html
@@ -68,7 +68,7 @@ defaults:
       layout:     post
   -
     scope:
-      type:       "banners"
+      type:       "companies"
     values:
       permalink: /:collection/:name/
-      layout:     banner
+      layout:     company

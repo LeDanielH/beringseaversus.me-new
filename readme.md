@@ -1,5 +1,6 @@
-# BISTRO STATIC DEVSTACK
+# DANIEL'S STATIC DEVSTACK
 
+## FOR MAC USERS
 1. open your terminal and install dependencies (if you don't have them):
     1. ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"``` - installs brew package manager
     2. ```brew update``` - updates brew
@@ -11,8 +12,13 @@
     8. ```update_rubygems``` - updates rubygems
     9. ```gem install jekyll bundler``` - installs jekyll and bundler
 
+## FOR PC USERS
+1. to be continued
+
+
+## FOR BOTH
 2. go to project root and enter in the terminal;
     1. ```bundle install```
     2. ```npm install```
-    4. ```bundle exec jekyll serve```
-    5. ```npm run```
+    3. ```gulp offline-assets```
+    5. ```npm start```
