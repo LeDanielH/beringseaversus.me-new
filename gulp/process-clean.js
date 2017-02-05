@@ -4,9 +4,12 @@ var del = require('del');
 
 gulp.task('clean', function () {
 	return del([
-		// 'devel/sass/_generated/**/*',
-		// '!devel/sass/_generated/'
-		'devel/assets/offline/**/*'
+		'devel/assets/offline/**/*',
+		'devel/assets/_sass/utils/**/*',
+		'!devel/assets/_sass/utils/_utils.scss',
+		'devel/assets/generated/**/*',
+		'deploy/**/*',
+		'deploy/.htaccess'
 	], {
 		force: true
 	});

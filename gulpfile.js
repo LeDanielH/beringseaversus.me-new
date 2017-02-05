@@ -14,13 +14,11 @@ gulp.task('watch', function() {
 	gulp.watch(vars.paths.scripts.all.watch, ['process-scripts']);
 });
 
-gulp.task('default', [
-	'jekyll',
-	'localServer',
-	'watch'
-]);
+gulp.task('default', function(done) {
+	sequence('process-styles', 'process-scripts', ['jekyll','localServer','watch'], done);
+});
 
-gulp.task('offline-assets', function(done) {
+gulp.task('first-time', function(done) {
 	sequence('clean', ['prepare-libs','merge-js-libs'], done);
 });
 

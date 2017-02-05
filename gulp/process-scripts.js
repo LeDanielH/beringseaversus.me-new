@@ -12,7 +12,7 @@ var vars = require('./vars'),
 gulp.task('process-scripts', function() {
 	return gulp.src([
 		vars.paths.scripts.all.src + 'index.js',
-		vars.paths.scripts.all.src + '**/*.js'
+		// vars.paths.scripts.all.src + '**/*.js'
 	])
 	.pipe(plumber())
 	.pipe(sourcemaps.init())
