@@ -11,7 +11,11 @@
 	{% include head/meta.html %}
 	{% include head/icons.html %}
 	{% include head/feed.html %}
-	{% include head/cdns.html %}
+	{% if site.environment == 'development' %}
+		{% include head/cdns-local.html %}
+	{% else %}
+		{% include head/cdns.html %}
+	{% endif %}
 	{% include head/assets.html %}
 	{% include head/analytics.html %}
 </head>

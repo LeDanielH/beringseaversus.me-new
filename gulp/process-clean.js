@@ -14,3 +14,12 @@ gulp.task('clean', function () {
 		force: true
 	});
 });
+
+gulp.task('clean-dev', function () {
+	return del([
+		'devel/assets/generated/main.css',
+		'devel/assets/generated/scripts.js'
+	], {
+		force: true
+	});
+});

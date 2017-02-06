@@ -6,7 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var duplicate = require('gulp-rename');
 var localServer = require('gulp-connect');
 var processSass = require('gulp-sass');
-var nanofyCss = require('gulp-cssnano');
+var cleanCss = require('gulp-clean-css');
 var purgeCss = require('gulp-css-purge');
 var stripCssComments = require('gulp-strip-css-comments');
 var purifyCss = require('gulp-purifycss');
@@ -19,16 +19,21 @@ gulp.task('process-styles', [], function() {
 			outputStyle: 'expanded'
 		}).on('error', processSass.logError))
 		.pipe(sourcemaps.write())
-		.pipe(purgeCss())
-		.pipe(stripCssComments())
 		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
 		.pipe(autoprefixer({
 			cascade: false,
 			browsers: ['ie >= 10']
 		}))
 		.pipe(gulp.dest(vars.paths.styles.all.dest))
-		.pipe(duplicate({suffix: '.min'}))
-		.pipe(nanofyCss())
-		.pipe(gulp.dest(vars.paths.styles.all.dest))
 		.pipe(localServer.reload());
+});
+
+gulp.task('process-styles-prod', [], function() {
+	return gulp.src([vars.paths.styles.all.dest + 'main.css'])
+		.pipe(stripCssComments())
+		.pipe(purgeCss())
+		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
+		.pipe(cleanCss())
+		.pipe(duplicate({suffix: '.min'}))
+		.pipe(gulp.dest(vars.paths.styles.all.dest))
 });

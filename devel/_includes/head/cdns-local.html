@@ -1,0 +1,11 @@
+{% for item in site.data.template.cdnjs-local %}
+	{% for nesteditem in item %}
+		<script src="{{ site.baseurl | append:site.baseurl }}{{ nesteditem[1] }}"></script>
+	{% endfor %}
+{% endfor %}
+
+{% for item in site.data.template.cdncss-local %}
+	{% for nesteditem in item %}
+		<link rel="stylesheet" href="{{ site.baseurl | append:site.baseurl }}{{ nesteditem[1] }}">
+	{% endfor %}
+{% endfor %}

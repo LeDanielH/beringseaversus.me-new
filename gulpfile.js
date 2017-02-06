@@ -22,3 +22,7 @@ gulp.task('first-time', function(done) {
 	sequence('clean', ['prepare-libs','merge-js-libs'], done);
 });
 
+// run this task only after you switch enviroment in _config.yaml to production
+gulp.task('prod', function(done) {
+	sequence(['process-styles-prod','process-scripts-prod'], 'clean-dev', done);
+});

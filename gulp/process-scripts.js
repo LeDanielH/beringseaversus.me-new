@@ -23,11 +23,16 @@ gulp.task('process-scripts', function() {
 	.pipe(checkJs())
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest(vars.paths.scripts.all.dest))
+	.pipe(localServer.reload());
+});
+
+gulp.task('process-scripts-prod', function() {
+	return gulp.src([vars.paths.scripts.all.dest + 'scripts.js',])
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())
 	.pipe(gulp.dest(vars.paths.scripts.all.dest))
-	.pipe(localServer.reload());
 });
+
 
 gulp.task('modernizeJs', function() {
 	return gulp.src(vars.watchedJsFiles)
