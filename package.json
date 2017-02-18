@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "installNpmPackages": "npm i",
     "postinstall": "bower install",
     "start": "gulp",
-    "deploy": "now -e MONGO_USER=@mongouser -e MONGO_PW=@mongopw"
+    "deploy": "now -e MONGO_USER=@mongouser -e MONGO_PW=@mongopw",
+    "jekyllinstall": "bundle install",
+    "jekyllupdate": "bundle update",
+    "installall": ""
   },
   "author": "Daniel Hoksza",
   "license": "ISC",
@@ -15,6 +19,8 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.18.0",
     "browser-sync": "https://registry.npmjs.org/browser-sync/-/browser-sync-2.18.2.tgz",
+    "cross-env": "^3.1.4",
+    "cross-var": "^1.0.2",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
@@ -36,6 +42,9 @@
     "gulp-util": "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.7.tgz",
     "jshint": "^2.9.4",
     "mongodb": "^2.2.16",
+    "npm-run-all": "^4.0.1",
+    "opn-cli": "^3.1.0",
+    "rimraf": "^2.5.4",
     "run-sequence": "^1.2.2"
   }
 }
