@@ -16,8 +16,10 @@
 		"update:npm": "npm update",
 		"update:jekyll": "bundle update",
 		"update:bower": "bower update",
-		"install:all": "npm-run-all install:jekyll install:npm install:bower",
-		"update:all": "npm-run-all update:jekyll update:npm update:bower"
+		"packages:install": "npm-run-all install:*",
+		"packages:update": "npm-run-all update:*",
+		"libs:prepare": "gulp first-time",
+		"firstTime": "npm-run-all packages:* libs:prepare start"
 	},
 	"author": "Daniel Hoksza <daniel.hoksza@gmail.com> (http://ledanielh.github.io/)",
 	"license": "ISC",
