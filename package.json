@@ -1,19 +1,25 @@
 {
   "name": "beringseaversus.me-new",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "website about the work of fishermen in the Bering Sea",
   "main": "index.js",
+  "config": {
+    "port": "9876"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "installNpmPackages": "npm i",
-    "postinstall": "bower install",
     "start": "gulp",
     "deploy": "now -e MONGO_USER=@mongouser -e MONGO_PW=@mongopw",
-    "jekyllinstall": "bundle install",
-    "jekyllupdate": "bundle update",
-    "installall": ""
+    "install:jekyll": "bundle install",
+    "install:npm": "npm i",
+    "install:bower": "bower install",
+    "update:npm": "npm update",
+    "update:jekyll": "bundle update",
+    "update:bower": "bower update",
+    "install:all": "npm-run-all install:jekyll install:npm install:bower",
+    "update:all": "npm-run-all update:jekyll update:npm update:bower"
   },
-  "author": "Daniel Hoksza",
+  "author": "Daniel Hoksza <daniel.hoksza@gmail.com> (http://ledanielh.github.io/)",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
