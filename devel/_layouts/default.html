@@ -5,11 +5,16 @@ layout: compress
 <html class="no-js">
 	{% include head.html %}
 	<body class="page">
-		<div class="page__width--full">
-			{% include nav.html %}
-				{{ content }}
-			{% include footer.html %}
+		<div class="ui bottom attached segment pushable">
+			{% include sidebar.html %}
+			<div class="pusher">
+				{% include header.html %}
+				<div class="ui basic segment">
+					{{ content }}
+					{% include footer.html %}
+				</div>
+			</div>
 		</div>
-	{% include footer-scripts.html %}
+		{% include footer-scripts.html %}
 	</body>
 </html>

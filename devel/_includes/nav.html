@@ -1,23 +1,23 @@
-<nav class="nav">
+<nav class="nav__menu ui inverted labeled icon left inline vertical sidebar menu">
 	{% for page in site.pages %}
-		{% if page.title != null and page.util != true %}
-			<a class="nav__item" style="display: block;" href="{{ page.url | prepend: site.baseurl }}" class="nav__item">{{ page.title | upcase }}</a>
-		{% endif %}
+	{% if page.title != null and page.util != true %}
+	<a class="nav__item item" style="display: block;" href="{{ page.url | prepend: site.baseurl }}" class="nav__item item">{{ page.title | upcase }}</a>
+	{% endif %}
 	{% endfor %}
 
 	{% assign sorted_categories = site.categories %}
 	{% for category in sorted_categories %}
-		<h4 class="nav__category">{{ category | first | replace: "-", " " | upcase }}</h4>
-		{% for posts in category %}
-			{% for post in posts reversed %}
-				{% if post.url %}
-					<a class="nav__item" style="display: block;" href="{{ post.url | prepend: site.baseurl }}" class="nav__item">{{ post.title | upcase }}</a>
-				{% endif %}
-			{% endfor %}
-		{% endfor %}
+	<h4 class="nav__category">{{ category | first | replace: "-", " " | upcase }}</h4>
+	{% for posts in category %}
+	{% for post in posts reversed %}
+	{% if post.url %}
+	<a class="nav__item item" style="display: block;" href="{{ post.url | prepend: site.baseurl }}" class="nav__item item">{{ post.title | upcase }}</a>
+	{% endif %}
+	{% endfor %}
+	{% endfor %}
 	{% endfor %}
 	<h4 class="nav__category">MENTIONS</h4>
 	{% for link in site.data.navlinks %}
-		<a class="nav__item" style="display: block;" href="{{ link.url }}" class="nav__item">{{ link.title | upcase }}</a>
+	<a class="nav__item item" style="display: block;" href="{{ link.url }}" class="nav__item item">{{ link.title | upcase }}</a>
 	{% endfor %}
 </nav>
