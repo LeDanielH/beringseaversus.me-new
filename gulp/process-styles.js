@@ -19,7 +19,6 @@ gulp.task('process-styles', [], function() {
 			outputStyle: 'expanded'
 		}).on('error', processSass.logError))
 		.pipe(sourcemaps.write())
-		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
 		.pipe(autoprefixer({
 			cascade: false,
 			browsers: ['ie >= 10']
@@ -32,7 +31,10 @@ gulp.task('process-styles-prod', [], function() {
 	return gulp.src([vars.paths.styles.all.dest + 'main.css'])
 		.pipe(stripCssComments())
 		.pipe(purgeCss())
-		// .pipe(purifyCss()) // todo dodelat po tom co udelam javascript
+		.pipe(purifyCss([
+			vars.paths.scripts.all.dest + '**/.js', // todo preprod -> prod
+			vars.paths.html.dest + '**/*.html'
+		]))
 		.pipe(cleanCss())
 		.pipe(duplicate({suffix: '.min'}))
 		.pipe(gulp.dest(vars.paths.styles.all.dest))
