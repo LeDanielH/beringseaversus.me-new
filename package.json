@@ -19,7 +19,9 @@
 		"packages:install": "npm-run-all install:*",
 		"packages:update": "npm-run-all update:*",
 		"libs:prepare": "gulp first-time",
-		"firstTime": "npm-run-all packages:* libs:prepare start"
+		"00_installAllDependancies": "npm run install:npm & npm run install:bower & npm run install:jekyll",
+		"01_firstTime": "npm-run-all update:* libs:prepare",
+		"02_projectSet": "npm run start"
 	},
 	"author": "Daniel Hoksza <daniel.hoksza@gmail.com> (http://ledanielh.github.io/)",
 	"license": "ISC",
