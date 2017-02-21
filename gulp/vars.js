@@ -3,7 +3,7 @@ var deploy = 'deploy/';
 var assetsSrc = devel + 'assets/';
 var bower = 'bower_components/';
 var offline = assetsSrc + 'offline/';
-var banners = devel + '_pages/'
+var banners = devel + '_pages/';
 
 var paths = {
 
