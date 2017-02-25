@@ -8,14 +8,57 @@
 	<script>
 		document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 	</script>
-	{% include head/meta.html %}
-	{% include head/icons.html %}
-	{% include head/feed.html %}
+
+	<!-- CDNS -->
 	{% if site.environment == 'development' %}
-		{% include head/cdns-local.html %}
+		{% for item in site.data.template.cdnjs-local %}
+			{% for nesteditem in item %}
+				<script src="{{ site.baseurl | append:site.baseurl }}{{ nesteditem[1] }}"></script>
+			{% endfor %}
+		{% endfor %}
+
+		{% for item in site.data.template.cdncss-local %}
+			{% for nesteditem in item %}
+				<link rel="stylesheet" href="{{ site.baseurl | append:site.baseurl }}{{ nesteditem[1] }}">
+			{% endfor %}
+		{% endfor %}
+		<link rel="stylesheet" href="{{ site.baseurl | append:site.baseurl }}{{ site.data.template.codes-path }}main.css" />
+		<script src="{{ site.baseurl | append:site.baseurl }}{{ site.data.template.codes-path }}scripts.js" async></script>
 	{% else %}
-		{% include head/cdns.html %}
+		<!-- META TAGS -->
+		{% for item in site.data.template.meta %}
+			{% for nesteditem in item %}
+				<meta property="{{ nesteditem[0] }}" content="{{ nesteditem[1] }}">
+			{% endfor %}
+		{% endfor %}
+
+		<!-- CDNS -->
+		{% for item in site.data.template.cdnjs %}
+			{% for nesteditem in item %}
+				<script src="{{ nesteditem[1] }}"></script>
+			{% endfor %}
+		{% endfor %}
+
+		{% for item in site.data.template.cdncss %}
+			{% for nesteditem in item %}
+				<link rel="stylesheet" href="{{ nesteditem[1] }}">
+			{% endfor %}
+		{% endfor %}
+		<link rel="stylesheet" href="{{ site.baseurl | append:site.baseurl }}{{ site.data.template.codes-path }}main.min.css" />
+		<script src="{{ site.baseurl | append:site.baseurl }}{{ site.data.template.codes-path }}scripts.min.js" async></script>
+		<!-- FEED -->
+		<link rel="alternate" type="application/rss+xml" title="BERINGSEAVERSUS.ME RSS" href="/feed.xml">
+
+		<!-- ANALYTICS -->
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-53689917-1', 'auto');
+			ga('send', 'pageview');
+		</script>
 	{% endif %}
-	{% include head/assets.html %}
-	{% include head/analytics.html %}
+
 </head>

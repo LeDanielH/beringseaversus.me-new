@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp & npm run browserSync",
+    "start": "gulp",
     "browserSync": "gulp localServer",
     "deploy": "now -e MONGO_USER=@mongouser -e MONGO_PW=@mongopw",
     "install:bundler": "gem install bundler & gem install github-pages",

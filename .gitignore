@@ -2,6 +2,7 @@ deploy
 node_modules
 bower_components
 
+.sass-cache
 devel/.sass-cache
 .vscode
 .idea

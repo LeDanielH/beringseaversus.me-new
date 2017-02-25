@@ -12,32 +12,43 @@ gulp.task('deploy', function() {
 	.pipe(deploy());
 });
 
-gulp.task('jekyll', function (gulpCallBack) {
-	var bundle = process.platform === "win32" ? "bundle.bat" : "bundle";
-	var jekyll = spawn(bundle, ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
+var Jekyll = {
+	bundle: process.platform === "win32" ? "bundle.bat" : "bundle",
+	serve: function () {
+		gulp.task('jekyll-serve', function (gulpCallBack) {
+			var jekyll = spawn(Jekyll.bundle, ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
 
-	jekyll.on('exit', function(code) {
-		gulpCallBack(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
-	});
-});
+			jekyll.on('exit', function(code) {
+				gulpCallBack(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
+			});
+		});
+	},
+	build: function () {
+		gulp.task('jekyll-build', function() {
+			var shellCommand = Jekyll.bundle + ' exec jekyll build --watch';
 
-gulp.task('jekyll-build-site', function() {
-    var bundle = process.platform === "win32" ? "bundle.bat" : "bundle";
-    var shellCommand = bundle + ' exec jekyll serve --incremental';
+			return gulp.src('')
+				.pipe(shell(shellCommand))
+				.on('error', gutil.log);
+		});
+	},
+	buildPost: function () {
+		gulp.task('jekyll-build-post', function() {
+			var shellCommand = Jekyll.bundle + ' exec jekyll build --watch --limit_posts 1';
 
-    return gulp.src('')
-        .pipe(shell(shellCommand))
-		.on('error', gutil.log);
-});
+			return gulp.src('')
+				.pipe(shell(shellCommand))
+				.on('error', gutil.log);
+		});
+	},
+	init: function () {
+		Jekyll.serve();
+		Jekyll.build();
+		Jekyll.buildPost();
+	}
+};
 
-gulp.task('jekyll-build-last-post', function() {
-    var bundle = process.platform === "win32" ? "bundle.bat" : "bundle";
-    var shellCommand = bundle + ' exec jekyll build --watch --limit_posts 1';
-
-    return gulp.src('')
-        .pipe(shell(shellCommand))
-        .on('error', gutil.log);
-});
+Jekyll.init();
 
 
 gulp.task('localServer', function () {

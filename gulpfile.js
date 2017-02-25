@@ -18,7 +18,7 @@ gulp.task('default', function(done) {
 	sequence(
 		['process-styles', 'process-scripts'],
         ['watch', 'localServer'],
-        'jekyll-build-site', // must be run last because it prevents other tasks from running if it is run before them
+        'jekyll-build', // must be run last because it prevents other tasks from running if it is run before them
 		done);
 });
 

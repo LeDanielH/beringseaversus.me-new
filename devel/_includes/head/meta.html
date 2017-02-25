@@ -1,5 +1,0 @@
-{% for item in site.data.template.meta %}
-	{% for nesteditem in item %}
-	<meta property="{{ nesteditem[0] }}" content="{{ nesteditem[1] }}">
-	{% endfor %}
-{% endfor %}
