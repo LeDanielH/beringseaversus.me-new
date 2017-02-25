@@ -1,6 +1,6 @@
 var vars = require('./gulp/vars'),
 	gulp = require('gulp');
-	sequence = require('run-sequence');
+	sequence = require('run-sequence').use(gulp);
 
 require('./gulp/process-styles');
 require('./gulp/process-scripts');
@@ -15,7 +15,11 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function(done) {
-	sequence('process-styles', 'process-scripts', ['jekyll','localServer','watch'], done);
+	sequence(
+		['process-styles', 'process-scripts'],
+        ['watch', 'localServer'],
+        'jekyll-build-site', // must be run last because it prevents other tasks from running if it is run before them
+		done);
 });
 
 gulp.task('first-time', function(done) {

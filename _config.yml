@@ -24,6 +24,8 @@ url: "localhost"
 # this is to prevent any plugins from running
 safe: true
 
+profile: true
+
 # does not include hostname, this is what goes after url(like project folder on github), always prepend with slash, can leave this blank
 baseurl: ""
 
@@ -44,7 +46,7 @@ exclude:
 # this is what you want in deploy folder
 include:      ['.htaccess']
 
-# faster builds but inreliable
+# faster builds but unreliable
 incremental:  true
 
 # collections are used like list of things (albums, team members, companies in this case), if you want to create another collection, you have to make a folder in devel like that '_collectionname' and than include it here, just like I included companies
