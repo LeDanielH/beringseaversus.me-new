@@ -1,18 +1,18 @@
-var vars = require('./vars');
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var duplicate = require('gulp-rename');
-var localServer = require('gulp-connect');
-var processSass = require('gulp-sass');
-var cleanCss = require('gulp-clean-css');
-var purgeCss = require('gulp-css-purge');
-var stripCssComments = require('gulp-strip-css-comments');
-var purifyCss = require('gulp-purifycss');
+import {paths} from './vars';
+import gulp from 'gulp';
+import plumber from 'gulp-plumber';
+import sourcemaps from 'gulp-sourcemaps';
+import autoprefixer from 'gulp-autoprefixer';
+import duplicate from 'gulp-rename';
+import localServer from 'gulp-connect';
+import processSass from 'gulp-sass';
+import cleanCss from 'gulp-clean-css';
+import purgeCss from 'gulp-css-purge';
+import stripCssComments from 'gulp-strip-css-comments';
+import purifyCss from 'gulp-purifycss';
 
-gulp.task('process-styles', [], function() {
-	return gulp.src([vars.paths.styles.all.src])
+const processStyles = gulp.task('process-styles', [], () => {
+	return gulp.src([paths.styles.all.src])
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(processSass({
@@ -23,19 +23,23 @@ gulp.task('process-styles', [], function() {
 			cascade: false,
 			browsers: ['ie >= 10']
 		}))
-		.pipe(gulp.dest(vars.paths.styles.all.dest))
+		.pipe(gulp.dest(paths.styles.all.dest))
 		.pipe(localServer.reload());
 });
 
-gulp.task('process-styles-prod', [], function() {
-	return gulp.src([vars.paths.styles.all.dest + 'main.css'])
+const processStylesProd = gulp.task('process-styles-prod', [], () => {
+	return gulp.src([paths.styles.all.dest + 'main.css'])
 		.pipe(stripCssComments())
 		.pipe(purgeCss())
 		.pipe(purifyCss([
-			vars.paths.scripts.all.dest + '**/.js', // todo preprod -> prod
-			vars.paths.html.dest + '**/*.html'
+			`${paths.scripts.all.dest}**/.js`, // todo preprod -> prod
+			`${paths.html.dest}**/*.html`
 		]))
 		.pipe(cleanCss())
 		.pipe(duplicate({suffix: '.min'}))
-		.pipe(gulp.dest(vars.paths.styles.all.dest))
+		.pipe(gulp.dest(paths.styles.all.dest))
 });
+
+export {processStyles, processStylesProd};
+
+

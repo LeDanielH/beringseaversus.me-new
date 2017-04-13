@@ -1,47 +1,48 @@
-var vars = require('./vars'),
-	gulp = require('gulp'),
-	localServer = require('gulp-connect'),
-	spawn = require('child_process').spawn,
-	gutil = require('gulp-util'),
-	browserSync = require('browser-sync').create(),
-	shell = require('gulp-shell'),
-	deploy = require('gulp-gh-pages');
+import {paths, renderedNames} from './vars';
+import gulp from 'gulp';
+import localServer from 'gulp-connect';
+import * as child from 'child_process';
+const spawn = child.spawn;
+import gutil from 'gulp-util';
+import bs from 'browser-sync';
+const browserSync = bs.create();
+import shell from 'gulp-shell';
+import deploy from 'gulp-gh-pages';
 
-gulp.task('deploy', function() {
-	return gulp.src(vars.paths.deploy)
-	.pipe(deploy());
+const deploySite = gulp.task('deploy', () => {
+	return gulp.src(paths.deploy).pipe(deploy());
 });
 
-var Jekyll = {
+const Jekyll = {
 	bundle: process.platform === "win32" ? "bundle.bat" : "bundle",
-	serve: function () {
-		gulp.task('jekyll-serve', function (gulpCallBack) {
-			var jekyll = spawn(Jekyll.bundle, ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
+	serve: () => {
+		gulp.task('jekyll-serve', (gulpCallBack) => {
+			const jekyll = spawn(Jekyll.bundle, ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
 
-			jekyll.on('exit', function(code) {
+			jekyll.on('exit', (code) => {
 				gulpCallBack(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
 			});
 		});
 	},
-	build: function () {
-		gulp.task('jekyll-build', function() {
-			var shellCommand = Jekyll.bundle + ' exec jekyll build --watch';
+	build: () => {
+		gulp.task('jekyll-build', () => {
+			const shellCommand = Jekyll.bundle + ' exec jekyll build --watch';
 
 			return gulp.src('')
 				.pipe(shell(shellCommand))
 				.on('error', gutil.log);
 		});
 	},
-	buildPost: function () {
-		gulp.task('jekyll-build-post', function() {
-			var shellCommand = Jekyll.bundle + ' exec jekyll build --watch --limit_posts 1';
+	buildPost: () => {
+		gulp.task('jekyll-build-post', () => {
+			const shellCommand = Jekyll.bundle + ' exec jekyll build --watch --limit_posts 1';
 
 			return gulp.src('')
 				.pipe(shell(shellCommand))
 				.on('error', gutil.log);
 		});
 	},
-	init: function () {
+	init: () => {
 		Jekyll.serve();
 		Jekyll.build();
 		Jekyll.buildPost();
@@ -51,13 +52,13 @@ var Jekyll = {
 Jekyll.init();
 
 
-gulp.task('localServer', function () {
+gulp.task('localServer', () => {
 	browserSync.init({
-		files: [vars.paths.html.dest + '/**'],
+		files: [paths.html.dest + '/**'],
 		port: 9876,
         ghostMode: false,
 		server: {
-			baseDir: vars.paths.html.dest
+			baseDir: paths.html.dest
 		}
 	});
 });
