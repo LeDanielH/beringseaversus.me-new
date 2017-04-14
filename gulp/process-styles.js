@@ -11,7 +11,7 @@ import purgeCss from 'gulp-css-purge';
 import stripCssComments from 'gulp-strip-css-comments';
 import purifyCss from 'gulp-purifycss';
 
-const processStyles = gulp.task('process-styles', [], () => {
+const processStyles = gulp.task('processStyles', [], () => {
 	return gulp.src([paths.styles.all.src])
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
@@ -27,7 +27,7 @@ const processStyles = gulp.task('process-styles', [], () => {
 		.pipe(localServer.reload());
 });
 
-const processStylesProd = gulp.task('process-styles-prod', [], () => {
+const processStylesProd = gulp.task('processStylesProd', [], () => {
 	return gulp.src([paths.styles.all.dest + 'main.css'])
 		.pipe(stripCssComments())
 		.pipe(purgeCss())

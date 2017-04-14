@@ -4,7 +4,7 @@ import gzip from 'gulp-gzip';
 import concat from 'gulp-concat';
 import uglifyJs from 'gulp-uglify';
 
-gulp.task('merge-js-all', () => {
+gulp.task('mergeJsAll', () => {
 	return gulp.src([
 		paths.libs.jquery.src,
 		paths.libs.semantic.js
@@ -16,9 +16,6 @@ gulp.task('merge-js-all', () => {
 	.pipe(gulp.dest(paths.merged.dest));
 });
 
-export default function () {
-	gulp.task('merge-js-libs', [
-		'merge-js-all'
-	]);
-}
+const mergeJsLibs = gulp.task('mergeJsLibs', ['mergeJsAll']);
 
+export {mergeJsLibs};

@@ -1,25 +1,21 @@
-var vars = require('./vars');
-var gulp = require('gulp');
-var del = require('del');
+import {paths} from './vars';
+import gulp from 'gulp';
+import del from 'del';
 
-gulp.task('clean', function () {
-	return del([
-		'devel/assets/offline/**/*',
-		'devel/assets/_sass/utils/**/*',
-		'!devel/assets/_sass/utils/_utils.scss',
-		'devel/assets/generated/**/*',
-		'deploy/**/*',
-		'deploy/.htaccess'
-	], {
-		force: true
-	});
+const cleanDevelopment = gulp.task('cleanDevelopment', () => {
+	let itemsToBeDeleted = [];
+	paths.delete.development.forEach((item) => itemsToBeDeleted.push(item));
+	console.log(`${itemsToBeDeleted} will be deleted`);
+	return del(itemsToBeDeleted, { force: true });
 });
 
-gulp.task('clean-dev', function () {
-	return del([
-		'devel/assets/generated/main.css',
-		'devel/assets/generated/scripts.js'
-	], {
-		force: true
-	});
+const cleanProduction = gulp.task('cleanProduction', () => {
+	let itemsToBeDeleted = [];
+	paths.delete.production.forEach((item) => itemsToBeDeleted.push(item));
+	console.log(`${itemsToBeDeleted} will be deleted`);
+	return del(itemsToBeDeleted, { force: true });
 });
+
+
+
+export default {cleanDevelopment, cleanProduction};

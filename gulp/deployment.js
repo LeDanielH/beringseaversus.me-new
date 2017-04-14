@@ -1,65 +1,44 @@
-import {paths, renderedNames} from './vars';
+import {paths} from './vars';
 import gulp from 'gulp';
-import localServer from 'gulp-connect';
 import * as child from 'child_process';
-const spawn = child.spawn;
 import gutil from 'gulp-util';
 import bs from 'browser-sync';
-const browserSync = bs.create();
 import shell from 'gulp-shell';
 import deploy from 'gulp-gh-pages';
 
-const deploySite = gulp.task('deploy', () => {
+const browserSync = bs.create();
+const spawn = child.spawn;
+
+const deploySite = gulp.task('deploySite', () => {
 	return gulp.src(paths.deploy).pipe(deploy());
 });
 
-const Jekyll = {
-	bundle: process.platform === "win32" ? "bundle.bat" : "bundle",
-	serve: () => {
-		gulp.task('jekyll-serve', (gulpCallBack) => {
-			const jekyll = spawn(Jekyll.bundle, ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
-
-			jekyll.on('exit', (code) => {
-				gulpCallBack(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
-			});
-		});
-	},
-	build: () => {
-		gulp.task('jekyll-build', () => {
-			const shellCommand = Jekyll.bundle + ' exec jekyll build --watch';
-
-			return gulp.src('')
-				.pipe(shell(shellCommand))
-				.on('error', gutil.log);
-		});
-	},
-	buildPost: () => {
-		gulp.task('jekyll-build-post', () => {
-			const shellCommand = Jekyll.bundle + ' exec jekyll build --watch --limit_posts 1';
-
-			return gulp.src('')
-				.pipe(shell(shellCommand))
-				.on('error', gutil.log);
-		});
-	},
-	init: () => {
-		Jekyll.serve();
-		Jekyll.build();
-		Jekyll.buildPost();
-	}
-};
-
-Jekyll.init();
-
-
-gulp.task('localServer', () => {
+const localServer = gulp.task('localServer', () => {
 	browserSync.init({
 		files: [paths.html.dest + '/**'],
 		port: 9876,
-        ghostMode: false,
+		ghostMode: false,
 		server: {
 			baseDir: paths.html.dest
 		}
 	});
 });
 
+const jekyllBundle = process.platform === "win32" ? "bundle.bat" : "bundle";
+
+const jekyllServe = gulp.task('jekyllServe', (gulpCallBack) => {
+	const jekyll = spawn(jekyllBundle, ['exec', 'jekyll', 'serve'], {stdio: 'inherit'});
+	jekyll.on('exit', (code) => gulpCallBack(code === 0 ? null :`ERROR: Jekyll process exited with code: ${code}`));
+});
+
+const jekyllBuild = gulp.task('jekyllBuild', () => {
+	const shellCommand = `${jekyllBundle} exec jekyll build --watch`;
+	return gulp.src('').pipe(shell(shellCommand)).on('error', gutil.log);
+});
+
+const jekyllBuildPost = gulp.task('jekyllBuildPost', () => {
+	const shellCommand = `${jekyllBundle} exec jekyll build --watch --limit_posts 1`;
+	return gulp.src('').pipe(shell(shellCommand)).on('error', gutil.log);
+});
+
+export {deploySite, localServer, jekyllServe, jekyllBuild, jekyllBuildPost};

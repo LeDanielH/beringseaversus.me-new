@@ -9,7 +9,7 @@ import uglifyJs from 'gulp-uglify';
 import babel from 'gulp-babel';
 import checkJs from 'gulp-jshint';
 
-const processScripts = gulp.task('process-scripts', () => {
+const processScripts = gulp.task('processScripts', () => {
 	return gulp.src([
 		`${paths.scripts.all.src}index.js`,
 		// paths.scripts.all.src + '**/*.js'
@@ -26,7 +26,7 @@ const processScripts = gulp.task('process-scripts', () => {
 	.pipe(localServer.reload());
 });
 
-const processScriptsProd = gulp.task('process-scripts-prod', () => {
+const processScriptsProd = gulp.task('processScriptsProd', () => {
 	return gulp.src([`${paths.scripts.all.dest}scripts.js`,])
 	.pipe(duplicate({suffix: '.min'}))
 	.pipe(uglifyJs())

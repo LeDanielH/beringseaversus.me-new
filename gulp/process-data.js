@@ -1,21 +1,22 @@
-var vars = require('./vars'),
-	gulp = require('gulp'),
-	localServer = require('gulp-connect'),
-	minifyImages = require('gulp-imagemin');
+import {paths} from './vars';
+import gulp from 'gulp';
+import localServer from 'gulp-connect';
+import minifyImages from 'gulp-imagemin';
 
-
-gulp.task('process-json', function() {
-	return gulp.src([vars.paths.json.src])
-		.pipe(gulp.dest(vars.paths.json.dest))
+const processJson = gulp.task('processJson', () => {
+	return gulp.src([paths.json.src])
+		.pipe(gulp.dest(paths.json.dest))
 		.pipe(localServer.reload());
 });
 
-gulp.task('process-images', function() {
-	return gulp.src([vars.paths.images.src])
+const processImages = gulp.task('processImages', () => {
+	return gulp.src([paths.images.src])
 		.pipe(minifyImages({
 			optimizationLevel: 3,
 			progressive: true,
 			interlaced: true
 		}))
-	.pipe(gulp.dest(vars.paths.images.dest));
+		.pipe(gulp.dest(paths.images.dest));
 });
+
+export {processJson, processImages};

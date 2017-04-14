@@ -8,6 +8,22 @@ const paths = {
 
 	deploy: `./${deploy}**/*`,
 
+	delete: {
+		development: [
+			`${offline}**/*`,
+			`${assetsSrc}_sass/utils/**/*`,
+			`!${assetsSrc}_sass/utils/_utils.scss`,
+			`${assetsSrc}generated/**/*`,
+			`${deploy}**/*`,
+			`${deploy}.htaccess`
+		],
+		production: [
+			`${assetsSrc}generated/main.css`,
+			`${assetsSrc}generated/scripts.js`
+		]
+	},
+
+
 	html: {
 		src: `${devel}**/*.html`,
 		dest: deploy

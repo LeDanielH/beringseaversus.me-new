@@ -1,16 +1,18 @@
-var vars = require('./vars'),
-	gulp = require('gulp'),
-	localServer = require('gulp-connect'),
-	nanofyHtml = require('gulp-htmlmin'),
-	plumber = require('gulp-plumber'),
-	stripHtmlComments = require('gulp-strip-comments');
+import {paths} from './vars';
+import gulp from 'gulp';
+import localServer from 'gulp-connect';
+import nanofyHtml from 'gulp-htmlmin';
+import plumber from 'gulp-plumber';
+import stripHtmlComments from 'gulp-strip-comments';
 
 
-gulp.task('process-html', [], function() {
-	return gulp.src(vars.paths.html.src)
+const processHtml = gulp.task('processHtml', [], () => {
+	return gulp.src(paths.html.src)
 		.pipe(plumber())
 		.pipe(stripHtmlComments())
 		.pipe(nanofyHtml({collapseWhitespace: true}))
-		.pipe(gulp.dest(vars.paths.html.dest))
+		.pipe(gulp.dest(paths.html.dest))
 		.pipe(localServer.reload());
 });
+
+export {processHtml};
