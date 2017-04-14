@@ -24,7 +24,6 @@ const processStyles = gulp.task('processStyles', [], () => {
 			browsers: ['ie >= 10']
 		}))
 		.pipe(gulp.dest(paths.styles.all.dest))
-		.pipe(localServer.reload());
 });
 
 const processStylesProd = gulp.task('processStylesProd', [], () => {

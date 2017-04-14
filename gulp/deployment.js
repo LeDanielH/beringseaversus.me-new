@@ -15,7 +15,7 @@ const deploySite = gulp.task('deploySite', () => {
 
 const localServer = gulp.task('localServer', () => {
 	browserSync.init({
-		files: [paths.html.dest + '/**'],
+		files: [paths.html.bs, paths.styles.bs, paths.scripts.bs],
 		port: 9876,
 		ghostMode: false,
 		server: {
@@ -32,7 +32,7 @@ const jekyllServe = gulp.task('jekyllServe', (gulpCallBack) => {
 });
 
 const jekyllBuild = gulp.task('jekyllBuild', () => {
-	const shellCommand = `${jekyllBundle} exec jekyll build --watch`;
+	const shellCommand = `${jekyllBundle} exec jekyll build`;
 	return gulp.src('').pipe(shell(shellCommand)).on('error', gutil.log);
 });
 

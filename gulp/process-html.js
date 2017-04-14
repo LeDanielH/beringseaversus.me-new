@@ -12,7 +12,6 @@ const processHtml = gulp.task('processHtml', [], () => {
 		.pipe(stripHtmlComments())
 		.pipe(nanofyHtml({collapseWhitespace: true}))
 		.pipe(gulp.dest(paths.html.dest))
-		.pipe(localServer.reload());
 });
 
 export {processHtml};

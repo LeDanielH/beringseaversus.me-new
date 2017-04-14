@@ -26,7 +26,8 @@ const paths = {
 
 	html: {
 		src: `${devel}**/*.html`,
-		dest: deploy
+		dest: deploy,
+		bs: `${deploy}**/*.html`
 	},
 
 	styles: {
@@ -35,7 +36,8 @@ const paths = {
 			src: `${assetsSrc}_sass/main.scss`,
 			dest: `${assetsSrc}generated/`,
 			watch: `${assetsSrc}_sass/**/*.+(scss|sass)`
-		}
+		},
+		bs:`${deploy}assets/generated/*.css`
 	},
 
 	scripts: {
@@ -43,7 +45,8 @@ const paths = {
 			src: `${assetsSrc}_scripts/`,
 			dest: `${assetsSrc}generated/`,
 			watch: `${assetsSrc}_scripts/**/*.js`
-		}
+		},
+		bs:`${deploy}assets/generated/*.js`
 	},
 
 	sassUtils: {

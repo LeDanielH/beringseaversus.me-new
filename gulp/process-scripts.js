@@ -23,7 +23,7 @@ const processScripts = gulp.task('processScripts', () => {
 	.pipe(checkJs())
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest(paths.scripts.all.dest))
-	.pipe(localServer.reload());
+	// .pipe(localServer.reload());
 });
 
 const processScriptsProd = gulp.task('processScriptsProd', () => {
