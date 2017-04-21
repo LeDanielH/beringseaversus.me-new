@@ -32,19 +32,19 @@ cdnjs:
 #  - jqueryslim: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
 
 cdnjs-local:
-  - jquery: '/assets/offline/jquery.min.js'
-  - semanticuijs: '/assets/offline/semantic/semantic.min.js'
-  #  - jqueryslim: '/assets/offline/jquery.slim.min.js'
+  - jquery: '/_assets/offline/jquery.min.js'
+  - semanticuijs: '/_assets/offline/semantic/semantic.min.js'
+  #  - jqueryslim: '/_assets/offline/jquery.slim.min.js'
 
 cdncss:
   - semanticuicss: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css'
 #  - google-font: 'http://fonts.googleapis.com/css?family=Arimo:400,700,400italic|Oswald:300,700'
 
 cdncss-local:
-  - semanticuicss: '/assets/offline/semantic/semantic.min.css'
+  - semanticuicss: '/_assets/offline/semantic/semantic.min.css'
 
 # code paths
-codes-path: /assets/generated/
+codes-path: '/_assets/generated/'
 
 # social
 social:

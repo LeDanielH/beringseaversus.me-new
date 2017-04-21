@@ -9,11 +9,8 @@ devel/.sass-cache
 *.log
 
 devel/.jekyll-metadata
-devel/assets/generated
-devel/assets/offline
-
-devel/assets/_sass/utils/bourbon
-devel/assets/_sass/utils/normalize
+devel/_assets/sass/utils/bourbon
+devel/_assets/sass/utils/normalize
 
 devel/_pages/**/*.css
 devel/_pages/**/*.min.css

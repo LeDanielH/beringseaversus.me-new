@@ -1,22 +1,18 @@
 import {paths} from './vars';
 import gulp from 'gulp';
-import localServer from 'gulp-connect';
-import minifyImages from 'gulp-imagemin';
 
 const processJson = gulp.task('processJson', () => {
-	return gulp.src([paths.json.src])
-		.pipe(gulp.dest(paths.json.dest))
-		.pipe(localServer.reload());
+	return gulp.src([paths.data.json.src]).pipe(gulp.dest(paths.data.json.dest))
 });
 
 const processImages = gulp.task('processImages', () => {
-	return gulp.src([paths.images.src])
-		.pipe(minifyImages({
-			optimizationLevel: 3,
-			progressive: true,
-			interlaced: true
-		}))
-		.pipe(gulp.dest(paths.images.dest));
+	return gulp.src([paths.data.images.src]).pipe(gulp.dest(paths.data.images.dest));
 });
 
-export {processJson, processImages};
+const processFonts = gulp.task('processFonts', () => {
+	return gulp.src([paths.data.fonts.src]).pipe(gulp.dest(paths.data.fonts.dest));
+});
+
+const processData = gulp.task('processData', ['processJson', 'processImages', 'processFonts']);
+
+export {processJson, processImages, processFonts, processData};

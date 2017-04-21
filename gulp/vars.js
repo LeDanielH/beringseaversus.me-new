@@ -1,8 +1,9 @@
 const devel = 'devel/';
 const deploy = 'deploy/';
-const assetsSrc = `${devel}assets/`;
+const assetsSrc = `${devel}_assets/`;
+const assetsDest = `${deploy}_assets/`;
 const bower = 'bower_components/';
-const offline = `${assetsSrc}offline/`;
+const offline = `${assetsDest}offline/`;
 
 const paths = {
 
@@ -10,16 +11,11 @@ const paths = {
 
 	delete: {
 		development: [
-			`${offline}**/*`,
-			`${assetsSrc}_sass/utils/**/*`,
-			`!${assetsSrc}_sass/utils/_utils.scss`,
-			`${assetsSrc}generated/**/*`,
 			`${deploy}**/*`,
 			`${deploy}.htaccess`
 		],
 		production: [
-			`${assetsSrc}generated/main.css`,
-			`${assetsSrc}generated/scripts.js`
+
 		]
 	},
 
@@ -33,59 +29,77 @@ const paths = {
 	styles: {
 
 		all: {
-			src: `${assetsSrc}_sass/main.scss`,
-			dest: `${assetsSrc}generated/`,
-			watch: `${assetsSrc}_sass/**/*.+(scss|sass)`
+			src: `${assetsSrc}sass/main.scss`,
+			dest: `${assetsDest}generated/`,
+			watch: `${assetsSrc}sass/**/*.+(scss|sass)`
 		},
-		bs:`${deploy}assets/generated/*.css`
+		bs:`${assetsDest}generated/*.css`
 	},
 
 	scripts: {
 		all: {
-			src: `${assetsSrc}_scripts/`,
-			dest: `${assetsSrc}generated/`,
-			watch: `${assetsSrc}_scripts/**/*.js`
+			src: `${assetsSrc}scripts/`,
+			dest: `${assetsDest}generated/`,
+			watch: `${assetsSrc}scripts/**/*.js`
 		},
-		bs:`${deploy}assets/generated/*.js`
+		bs: `${assetsDest}generated/*.js`
 	},
 
 	sassUtils: {
 
 		bourbon: {
 			src: `${bower}bourbon/app/assets/stylesheets/**/*.+(scss|sass)`,
-			dest: `${assetsSrc}_sass/utils/bourbon/`
+			dest: `${assetsSrc}sass/utils/bourbon/`
 		},
 		normalize: {
 			src: `${bower}normalize-scss/sass/**/*.+(scss|sass)`,
-			dest: `${assetsSrc}_sass/utils/normalize/`
+			dest: `${assetsSrc}sass/utils/normalize/`
 		}
 	},
 
 	libs: {
 		jquery: {
 			src: `${bower}jquery/dist/jquery.min.js`,
-			dest: offline
+			dest: `${assetsDest}offline/`
 		},
 
 		jquerySlim: {
 			src: `${bower}jquery/dist/jquery.slim.min.js`,
-			dest: offline
+			dest: `${assetsDest}offline/`
 		},
 
 		semantic: {
 			src: `${bower}semantic/dist/**/*`,
-			dest: `${offline}semantic`,
+			dest: `${assetsDest}offline/semantic`,
 			js: `${bower}semantic/dist/semantic.min.js`
 		},
 
 		gsap: {
 			src: `${bower}gsap/src/minified/**/*.js`,
-			dest: `${offline}gsap/`
+			dest: `${assetsDest}offline/gsap/`
+		}
+	},
+
+	data: {
+		images: {
+			src: `${assetsSrc}images/**/*.+(jpg|jpeg|png|svg|gif)`,
+			dest: `${assetsDest}images/`
+		},
+		json: {
+			src: `${assetsSrc}json/**/*.json`,
+			dest: `${assetsDest}`
+		},
+		fonts: {
+			src: `${assetsSrc}fonts/**/*.+(ttf|otf|woff|woff2|svg|eot)`,
+			dest: `${assetsDest}`
+		},
+		yml: {
+			watch: `${devel}_data/**/*.yml`
 		}
 	},
 
 	merged: {
-		dest: `${offline}merged/`
+		dest: `${assetsDest}offline/merged/`
 	}
 };
 
