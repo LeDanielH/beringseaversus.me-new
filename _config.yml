@@ -46,7 +46,7 @@ exclude:
 include:      ['.htaccess']
 
 # faster builds but unreliable
-incremental:  false
+incremental:  true
 
 keep_files:
   - '_assets'

@@ -27,7 +27,9 @@
   "author": "Daniel Hoksza <daniel.hoksza@gmail.com> (http://ledanielh.github.io/)",
   "license": "ISC",
   "dependencies": {
-    "semantic-ui-react": "^0.68.0"
+    "vue": "^2.2.6",
+    "vue-material": "^0.7.1",
+    "vue-router": "^2.4.0"
   },
   "devDependencies": {
     "babel": "6.23.0",
