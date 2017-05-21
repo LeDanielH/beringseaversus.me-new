@@ -40,9 +40,13 @@ const paths = {
 		all: {
 			src: `${assetsSrc}scripts/`,
 			dest: `${assetsDest}generated/`,
-			watch: `${assetsSrc}scripts/**/*.js`
+			watch: `${assetsSrc}scripts/**/*.js`,
 		},
-		bs: `${assetsDest}generated/*.js`
+		bs: `${assetsDest}generated/*.js`,
+		webpack: {
+			entry: `${assetsSrc}scripts/index.js`,
+			bundle: `${assetsDest}generated/`
+		}
 	},
 
 	sassUtils: {
