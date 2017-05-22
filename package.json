@@ -28,6 +28,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "react": "^15.5.4",
     "vue": "^2.2.6",
     "vue-material": "^0.7.1",
     "vue-router": "^2.4.0"
@@ -40,7 +41,9 @@
     "browser-sync": "https://registry.npmjs.org/browser-sync/-/browser-sync-2.18.2.tgz",
     "cross-env": "^3.1.4",
     "cross-var": "^1.0.2",
+    "css-loader": "^0.28.2",
     "del": "^2.2.2",
+    "extract-text-webpack-plugin": "^2.1.0",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
@@ -62,10 +65,13 @@
     "gulp-util": "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.7.tgz",
     "jshint": "^2.9.4",
     "mongodb": "^2.2.16",
+    "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.1",
     "opn-cli": "^3.1.0",
     "rimraf": "^2.5.4",
     "run-sequence": "^1.2.2",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.0",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
   },
