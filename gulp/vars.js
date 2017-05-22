@@ -135,4 +135,4 @@ const filterObject = (obj,newObj, exclude) => {
 	});
 };
 
-export {paths, ignoreModernizr, watchedJsFiles, renderedNames, filterObject};
+export {paths, ignoreModernizr, watchedJsFiles, renderedNames, filterObject, devel, deploy, assetsSrc, assetsDest};

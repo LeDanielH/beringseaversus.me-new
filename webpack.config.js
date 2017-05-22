@@ -1,6 +1,12 @@
-import {paths} from 'gulp/vars';
+import {paths, assetsDest, assetsSrc, deploy} from 'gulp/vars';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
+const env = process.env.NODE_ENV || 'development';
+const development = env === 'development';
+const production = env === 'production';
+const projectRoot = deploy;
+console.log(`Environment: ${env}`);
 
 // plugins
 const extractSass = new ExtractTextPlugin({
@@ -15,9 +21,13 @@ const uglifyJs = new webpack.optimize.UglifyJsPlugin({
 
 const webpackConfig = {
 	entry: paths.scripts.webpack.entry,
+
+	// todo figure out what this means
+	// devtool: development ? 'inline-source-map' : 'sourcemap',
 	output: {
 		path: paths.scripts.webpack.bundle,
-		filename: "bundle.js"
+		filename: "bundle.js",
+		publicPath: development ? `http://localhost:9876${assetsDest}` : assetsDest
 	},
 	module: {
 		loaders: [{
@@ -26,17 +36,49 @@ const webpackConfig = {
 			loader: 'babel-loader'
 		}],
 		rules: [{
-			test: /\.scss$/,
+
+			/* SASS */
+			test: /\.(scss|sass)$/,
+			loader: ExtractTextPlugin.extract({
+				fallback: 'style-loader',
+				use: development ? [
+					{ loader: "style-loader", options: {sourceMap: true} },
+					{ loader: "css-loader" },
+					{ loader: "sass-loader", options: {sourceComments: true, sourceMap: true}}
+				] : [
+					{ loader: "style-loader" },
+					{ loader: "postcss-loader" },
+					{ loader: "sass-loader"}
+				]
+			}),
+
+			// todo figure out how to use sass compilation
+			// use: [{
+			// 	loader: "style-loader" // creates style nodes from JS strings
+			// }, {
+			// 	loader: "css-loader" // translates CSS into CommonJS
+			// }, {
+			// 	loader: "sass-loader" // compiles Sass to CSS
+			// }]
+		}, {
+
+			/* FILE ASSETS */
+
+			test: /\.(jpeg|jpg|png|gif|woff|woff2|ttf|eot|svg)(\?.*)?$/,
 			use: [{
-				loader: "style-loader" // creates style nodes from JS strings
-			}, {
-				loader: "css-loader" // translates CSS into CommonJS
-			}, {
-				loader: "sass-loader" // compiles Sass to CSS
+				loader: 'file-loader',
+				options: {
+					name: 'content/[name].[ext]'
+				}
 			}]
 		}]
 	},
-	plugins: [extractSass, uglifyJs]
+	plugins: [extractSass, uglifyJs],
+	devServer: {
+		contentBase: deploy,
+		compress: true,
+		port: 9876
+	}
 };
 
 export {webpackConfig};
