@@ -19,6 +19,12 @@ const uglifyJs = new webpack.optimize.UglifyJsPlugin({
 	output: {comments: false},
 });
 
+let plugins = [];
+
+if (production) {
+	plugins.push(uglifyJs, extractSass);
+}
+
 const webpackConfig = {
 	entry: paths.scripts.webpack.entry,
 
@@ -73,7 +79,7 @@ const webpackConfig = {
 			}]
 		}]
 	},
-	plugins: [extractSass, uglifyJs],
+	plugins: plugins,
 	devServer: {
 		contentBase: deploy,
 		compress: true,
